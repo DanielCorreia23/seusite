@@ -21,13 +21,23 @@ body {
 
 .container {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
     width: 90%;
     max-width: 420px;
     box-shadow: 0 0 40px rgba(255,255,255,0.05);
-    animation: fadeIn 1.5s ease-in-out;
+}
+
+.fade-enter {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 1.2s ease;
 }
 
 h2 {
@@ -77,12 +87,7 @@ button:hover {
 }
 
 .spotify {
-    margin-top: 25px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    margin-top: 30px;
 }
 </style>
 </head>
@@ -97,7 +102,7 @@ button:hover {
     <p id="erro" style="color:#888;"></p>
 </div>
 
-<div class="container hidden" id="conteudo">
+<div class="container hidden fade-enter" id="conteudo">
     <h2>❤️</h2>
 
     <p>
@@ -113,20 +118,20 @@ button:hover {
     Todos os dias.
     </p>
 
-    <!-- MINI PLAYER SPOTIFY -->
     <div class="spotify">
-        <iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/track/3KkXRkHbMCARz0aVfEt68P"
-        width="100%"
-        height="80"
-        frameBorder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
+        <iframe 
+            style="border-radius:12px;"
+            src="https://open.spotify.com/embed/track/3nHuKdFJZm78CoeBnDcFKe"
+            width="100%" 
+            height="352" 
+            frameborder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
         </iframe>
     </div>
 
-    <pre style="margin-top:20px; color:#888;">
+    <pre style="margin-top:25px; color:#888;">
 function amor() {
     return "Para sempre.";
 }
@@ -140,7 +145,14 @@ function verificar() {
 
     if (senhaDigitada === senhaCorreta) {
         document.getElementById("login").classList.add("hidden");
-        document.getElementById("conteudo").classList.remove("hidden");
+
+        var conteudo = document.getElementById("conteudo");
+        conteudo.classList.remove("hidden");
+
+        setTimeout(() => {
+            conteudo.classList.add("fade-enter-active");
+        }, 50);
+
     } else {
         document.getElementById("erro").innerText = "Senha incorreta.";
     }
