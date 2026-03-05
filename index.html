@@ -3,150 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nosso Amor 2026</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Nosso Amor</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e1e2f, #3a1c71, #d76d77);
+    color: white;
+    text-align: center;
+    overflow: hidden;
 }
 
-body{
-    background:#0e0e0e;
-    color:white;
-    overflow:hidden;
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-.screen{
-    height:100vh;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-    position:absolute;
-    transition:0.6s;
+input {
+    padding: 12px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
 }
 
-.hidden{
-    opacity:0;
-    pointer-events:none;
-    transform:translateY(50px);
+button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: #ff4e88;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-h1{
-    font-size:3rem;
-    margin-bottom:20px;
+button:hover {
+    background: #ff2e70;
+    transform: scale(1.05);
 }
 
-.big-number{
-    font-size:4rem;
-    font-weight:700;
+.hidden {
+    display: none;
 }
 
-button{
-    margin-top:30px;
-    padding:12px 25px;
-    border:none;
-    background:white;
-    color:black;
-    font-weight:500;
-    cursor:pointer;
-    border-radius:30px;
-    transition:0.3s;
+#contador {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
-button:hover{
-    background:#ddd;
-}
-
-input{
-    padding:10px;
-    border-radius:20px;
-    border:none;
-    text-align:center;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
+
 <body>
 
-<!-- Música -->
-<iframe width="0" height="0" 
-src="https://www.youtube.com/embed/7zX0Y8E_3V8?autoplay=1&loop=1&playlist=7zX0Y8E_3V8" 
-frameborder="0" allow="autoplay"></iframe>
-
-<!-- Login -->
-<div class="screen" id="login">
-    <h1>Digite nossa data 💍</h1>
-    <input type="password" id="senha" placeholder="DDMMYYYY">
+<div class="container" id="login">
+    <h2>🔐 Sistema do Nosso Amor</h2>
+    <p>Digite a senha para acessar:</p>
+    <input type="password" id="senha" placeholder="12/03/2021 (sem barras)">
     <button onclick="verificar()">Entrar</button>
+    <p id="erro" style="color:#ffb3c6;"></p>
 </div>
 
-<!-- Tela 1 -->
-<div class="screen hidden" id="tela1">
-    <h1>Nosso Amor 2026</h1>
-    <p>Um ano que mudou tudo.</p>
-    <button onclick="proxima('tela2')">Começar</button>
-</div>
+<div class="container hidden" id="conteudo">
+    <h2>❤️ Acesso concedido ❤️</h2>
 
-<!-- Tela 2 -->
-<div class="screen hidden" id="tela2">
-    <div class="big-number" id="contador"></div>
-    <p>Desde que dissemos "sim".</p>
-    <button onclick="proxima('tela3')">Continuar</button>
-</div>
+    <p>
+    Desde <strong>12 de março de 2021</strong>,
+    minha melhor decisão foi dizer sim.
+    </p>
 
-<!-- Tela 3 -->
-<div class="screen hidden" id="tela3">
-    <h1>Nossos Números</h1>
-    <p>💬 Milhares de conversas</p>
-    <p>😂 Incontáveis risadas</p>
-    <p>🐶 2 filhos de quatro patas</p>
-    <button onclick="proxima('tela4')">Última Página</button>
-</div>
+    <p>
+    Já são <strong>1.819 dias</strong> escolhendo você todos os dias.
+    </p>
 
-<!-- Tela Final -->
-<div class="screen hidden" id="tela4">
-    <h1>E eu escolheria você</h1>
-    <p>em todas as versões da minha vida.</p>
+    <h3>Estamos juntos há:</h3>
+    <div id="contador"></div>
+
+    <p style="margin-top:20px;">
+    Eu escolheria você de novo.<br>
+    E de novo.<br>
+    E de novo.
+    </p>
+
+    <pre>
+function casamento() {
+    return "Eu escolho você todos os dias.";
+}
+    </pre>
 </div>
 
 <script>
-const dataCasamento = new Date("2025-03-12");
+function verificar() {
+    var senhaCorreta = "12032021";
+    var senhaDigitada = document.getElementById("senha").value;
 
-function verificar(){
-    const senha = document.getElementById("senha").value;
-    if(senha === "12032025"){
-        trocarTela("login","tela1");
-        atualizarContador();
-    } else{
-        alert("Senha incorreta 💔");
+    if (senhaDigitada === senhaCorreta) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("conteudo").classList.remove("hidden");
+    } else {
+        document.getElementById("erro").innerText = "Senha incorreta ❤️";
     }
 }
 
-function trocarTela(atual,proxima){
-    document.getElementById(atual).classList.add("hidden");
-    document.getElementById(proxima).classList.remove("hidden");
-}
+const dataCasamento = new Date("2021-03-12T00:00:00");
 
-function proxima(id){
-    const telas = document.querySelectorAll(".screen");
-    telas.forEach(t=>t.classList.add("hidden"));
-    document.getElementById(id).classList.remove("hidden");
-}
-
-function atualizarContador(){
+function atualizarContador() {
     const agora = new Date();
-    const diff = agora - dataCasamento;
-    const dias = Math.floor(diff/(1000*60*60*24));
-    document.getElementById("contador").innerText = dias + " dias juntos";
+    const diferenca = agora - dataCasamento;
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+        dias + " dias<br>" +
+        horas + " horas<br>" +
+        minutos + " minutos<br>" +
+        segundos + " segundos";
 }
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.innerHTML = "💖";
+    coracao.style.position = "fixed";
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.top = "100vh";
+    coracao.style.fontSize = (Math.random() * 20 + 10) + "px";
+    coracao.style.animation = "subir 5s linear forwards";
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+        coracao.remove();
+    }, 5000);
+}
+
+setInterval(criarCoracao, 800);
+
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes subir {
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}`;
+document.head.appendChild(style);
 </script>
 
 </body>
