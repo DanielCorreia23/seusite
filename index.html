@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nosso Amor</title>
+<title>Nós</title>
 
 <style>
 body {
@@ -13,50 +13,56 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #1e1e2f, #3a1c71, #d76d77);
+    background: #000;
     color: white;
     text-align: center;
     overflow: hidden;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 40px;
     border-radius: 20px;
     width: 90%;
-    max-width: 400px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    max-width: 420px;
+    box-shadow: 0 0 40px rgba(255,255,255,0.05);
     animation: fadeIn 1.5s ease-in-out;
+}
+
+h2 {
+    font-weight: 300;
+    letter-spacing: 2px;
 }
 
 input {
     padding: 12px;
     width: 100%;
-    margin-top: 10px;
-    border-radius: 10px;
-    border: none;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #111;
+    color: white;
     text-align: center;
     font-size: 16px;
 }
 
 button {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 12px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
-    background: #ff4e88;
-    color: white;
+    background: white;
+    color: black;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 button:hover {
-    background: #ff2e70;
-    transform: scale(1.05);
+    background: #ccc;
 }
 
 .hidden {
@@ -65,12 +71,13 @@ button:hover {
 
 #contador {
     font-size: 20px;
-    margin-top: 15px;
-    font-weight: bold;
+    margin-top: 20px;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 </style>
@@ -79,37 +86,32 @@ button:hover {
 <body>
 
 <div class="container" id="login">
-    <h2>🔐 Sistema do Nosso Amor</h2>
-    <p>Digite a senha para acessar:</p>
-    <input type="password" id="senha" placeholder="12/03/2021 (sem barras)">
+    <h2>🔐</h2>
+    <p>Acesse.</p>
+    <input type="password" id="senha" placeholder="Digite a senha">
     <button onclick="verificar()">Entrar</button>
-    <p id="erro" style="color:#ffb3c6;"></p>
+    <p id="erro" style="color:#888;"></p>
 </div>
 
 <div class="container hidden" id="conteudo">
-    <h2>❤️ Acesso concedido ❤️</h2>
+    <h2>❤️</h2>
 
     <p>
     Desde <strong>12 de março de 2021</strong>,
-    minha melhor decisão foi dizer sim.
-    </p>
-
-    <p>
-    Já são <strong>1.819 dias</strong> escolhendo você todos os dias.
+    minha melhor escolha foi você.
     </p>
 
     <h3>Estamos juntos há:</h3>
     <div id="contador"></div>
 
-    <p style="margin-top:20px;">
-    Eu escolheria você de novo.<br>
-    E de novo.<br>
-    E de novo.
+    <p style="margin-top:25px;">
+    Eu escolheria você novamente.<br>
+    Todos os dias.
     </p>
 
-    <pre>
-function casamento() {
-    return "Eu escolho você todos os dias.";
+    <pre style="margin-top:20px; color:#888;">
+function amor() {
+    return "Para sempre.";
 }
     </pre>
 </div>
@@ -123,7 +125,7 @@ function verificar() {
         document.getElementById("login").classList.add("hidden");
         document.getElementById("conteudo").classList.remove("hidden");
     } else {
-        document.getElementById("erro").innerText = "Senha incorreta ❤️";
+        document.getElementById("erro").innerText = "Senha incorreta.";
     }
 }
 
@@ -147,33 +149,6 @@ function atualizarContador() {
 
 setInterval(atualizarContador, 1000);
 atualizarContador();
-
-function criarCoracao() {
-    const coracao = document.createElement("div");
-    coracao.innerHTML = "💖";
-    coracao.style.position = "fixed";
-    coracao.style.left = Math.random() * 100 + "vw";
-    coracao.style.top = "100vh";
-    coracao.style.fontSize = (Math.random() * 20 + 10) + "px";
-    coracao.style.animation = "subir 5s linear forwards";
-    document.body.appendChild(coracao);
-
-    setTimeout(() => {
-        coracao.remove();
-    }, 5000);
-}
-
-setInterval(criarCoracao, 800);
-
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes subir {
-    to {
-        transform: translateY(-110vh);
-        opacity: 0;
-    }
-}`;
-document.head.appendChild(style);
 </script>
 
 </body>
