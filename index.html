@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Amor 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#0e0e0e;
+    color:white;
+    overflow:hidden;
+}
+
+.screen{
+    height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    position:absolute;
+    transition:0.6s;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(50px);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.big-number{
+    font-size:4rem;
+    font-weight:700;
+}
+
+button{
+    margin-top:30px;
+    padding:12px 25px;
+    border:none;
+    background:white;
+    color:black;
+    font-weight:500;
+    cursor:pointer;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ddd;
+}
+
+input{
+    padding:10px;
+    border-radius:20px;
+    border:none;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<!-- Música -->
+<iframe width="0" height="0" 
+src="https://www.youtube.com/embed/7zX0Y8E_3V8?autoplay=1&loop=1&playlist=7zX0Y8E_3V8" 
+frameborder="0" allow="autoplay"></iframe>
+
+<!-- Login -->
+<div class="screen" id="login">
+    <h1>Digite nossa data 💍</h1>
+    <input type="password" id="senha" placeholder="DDMMYYYY">
+    <button onclick="verificar()">Entrar</button>
+</div>
+
+<!-- Tela 1 -->
+<div class="screen hidden" id="tela1">
+    <h1>Nosso Amor 2026</h1>
+    <p>Um ano que mudou tudo.</p>
+    <button onclick="proxima('tela2')">Começar</button>
+</div>
+
+<!-- Tela 2 -->
+<div class="screen hidden" id="tela2">
+    <div class="big-number" id="contador"></div>
+    <p>Desde que dissemos "sim".</p>
+    <button onclick="proxima('tela3')">Continuar</button>
+</div>
+
+<!-- Tela 3 -->
+<div class="screen hidden" id="tela3">
+    <h1>Nossos Números</h1>
+    <p>💬 Milhares de conversas</p>
+    <p>😂 Incontáveis risadas</p>
+    <p>🐶 2 filhos de quatro patas</p>
+    <button onclick="proxima('tela4')">Última Página</button>
+</div>
+
+<!-- Tela Final -->
+<div class="screen hidden" id="tela4">
+    <h1>E eu escolheria você</h1>
+    <p>em todas as versões da minha vida.</p>
+</div>
+
+<script>
+const dataCasamento = new Date("2025-03-12");
+
+function verificar(){
+    const senha = document.getElementById("senha").value;
+    if(senha === "12032025"){
+        trocarTela("login","tela1");
+        atualizarContador();
+    } else{
+        alert("Senha incorreta 💔");
+    }
+}
+
+function trocarTela(atual,proxima){
+    document.getElementById(atual).classList.add("hidden");
+    document.getElementById(proxima).classList.remove("hidden");
+}
+
+function proxima(id){
+    const telas = document.querySelectorAll(".screen");
+    telas.forEach(t=>t.classList.add("hidden"));
+    document.getElementById(id).classList.remove("hidden");
+}
+
+function atualizarContador(){
+    const agora = new Date();
+    const diff = agora - dataCasamento;
+    const dias = Math.floor(diff/(1000*60*60*24));
+    document.getElementById("contador").innerText = dias + " dias juntos";
+}
+</script>
+
+</body>
+</html>
