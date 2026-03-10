@@ -9,130 +9,147 @@
 
 body{
 margin:0;
-font-family:Arial;
-background:black;
+font-family:system-ui;
+background:#0e0e0e;
 color:white;
 overflow:hidden;
 }
 
-.tela{
+.slide{
+position:absolute;
+width:100%;
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
+padding:40px;
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.slide.ativo{
+opacity:1;
+transform:translateY(0);
 }
 
 h1{
-font-size:40px;
+font-size:42px;
+margin-bottom:15px;
 }
 
 p{
 font-size:20px;
-opacity:0.8;
+opacity:.85;
+max-width:400px;
 }
 
 button{
-margin-top:30px;
-padding:12px 30px;
+margin-top:40px;
+padding:14px 34px;
 font-size:16px;
 border:none;
 border-radius:30px;
 background:#ff2e63;
 color:white;
 cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+#login{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
 input{
-padding:10px;
-font-size:16px;
+padding:12px;
 border-radius:10px;
 border:none;
+margin-top:15px;
 text-align:center;
-}
-
-.slide{
-display:none;
-}
-
-.ativo{
-display:flex;
+font-size:16px;
 }
 
 #contador{
-font-size:35px;
+font-size:36px;
 font-weight:bold;
 margin-top:20px;
 }
 
-</style>
+/* barra estilo stories */
 
+.progress{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+gap:5px;
+padding:10px;
+}
+
+.bar{
+flex:1;
+height:4px;
+background:#444;
+border-radius:10px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:0%;
+background:#1db954;
+transition:width 2s linear;
+}
+
+</style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-
-<div class="tela ativo" id="login">
-<h1>🔒</h1>
-<p>Digite a senha</p>
-
+<div id="login">
+<h2>Digite a senha</h2>
 <input type="password" id="senha">
-
 <button onclick="entrar()">Entrar</button>
 </div>
 
+<div class="progress" id="progress" style="display:none">
+<div class="bar"><div class="fill"></div></div>
+<div class="bar"><div class="fill"></div></div>
+<div class="bar"><div class="fill"></div></div>
+<div class="bar"><div class="fill"></div></div>
+</div>
 
-<!-- SLIDE 1 -->
-
-<div class="tela slide" id="s1">
-
+<div class="slide" id="s1">
 <h1>Daniel ❤️ Stephanie</h1>
-
-<p>Uma pequena retrospectiva<br>
-da nossa história</p>
-
+<p>Uma pequena retrospectiva da nossa história</p>
 <button onclick="proximo()">Começar</button>
-
 </div>
 
-
-<!-- SLIDE 2 -->
-
-<div class="tela slide" id="s2">
-
+<div class="slide" id="s2">
 <h1>Estamos juntos há</h1>
-
 <div id="contador"></div>
-
 <button onclick="proximo()">Continuar</button>
-
 </div>
 
-
-<!-- SLIDE 3 -->
-
-<div class="tela slide" id="s3">
-
+<div class="slide" id="s3">
 <h1>Momentos</h1>
-
-<p>
-Você transformou dias comuns<br>
-em memórias especiais.
-</p>
-
+<p>Você transformou dias comuns em memórias especiais.</p>
 <button onclick="proximo()">Continuar</button>
-
 </div>
 
-
-<!-- SLIDE 4 -->
-
-<div class="tela slide" id="s4">
-
-<h1>Nossa Música 🎵</h1>
+<div class="slide" id="s4">
+<h1>Nossa música</h1>
 
 <iframe style="border-radius:12px"
 src="https://open.spotify.com/embed/track/3nHuKdFJZm78CoeBnDcFKe"
@@ -144,30 +161,18 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 </iframe>
 
 <button onclick="proximo()">Última</button>
-
 </div>
 
-
-<!-- SLIDE FINAL -->
-
-<div class="tela slide" id="s5">
-
+<div class="slide" id="s5">
 <h1>Stephanie ❤️</h1>
-
-<p>
-Obrigado por fazer parte<br>
-da minha vida desde<br>
-12/03/2021
-</p>
-
-<p>
-Eu te amo.
-</p>
-
+<p>Obrigado por fazer parte da minha vida desde 12/03/2021</p>
+<p>Eu te amo.</p>
 </div>
-
 
 <script>
+
+let atual = 1
+const total = 5
 
 function entrar(){
 
@@ -176,47 +181,57 @@ let senha = document.getElementById("senha").value
 if(senha === "12032021"){
 
 document.getElementById("login").style.display="none"
+document.getElementById("progress").style.display="flex"
 
-document.getElementById("s1").classList.add("ativo")
+mostrar()
 
-}
-
-else{
-
+}else{
 alert("Senha incorreta")
-
 }
 
 }
 
-let atual=1
+function mostrar(){
 
-function proximo(){
-
-document.getElementById("s"+atual).classList.remove("ativo")
-
-atual++
+document.querySelectorAll(".slide").forEach(s=>s.classList.remove("ativo"))
 
 document.getElementById("s"+atual).classList.add("ativo")
 
+animarBarra()
+
 }
 
+function proximo(){
 
+if(atual < total){
+atual++
+mostrar()
+}
+
+}
+
+function animarBarra(){
+
+const bars = document.querySelectorAll(".fill")
+
+bars.forEach((b,i)=>{
+b.style.width = i < atual ? "100%" : "0%"
+})
+
+}
+
+/* contador */
 
 const inicio = new Date("2021-03-12")
 
 function atualizar(){
 
 const agora = new Date()
-
 const diff = agora - inicio
 
 const dias = Math.floor(diff / (1000*60*60*24))
-
 const anos = Math.floor(dias/365)
-
 const meses = Math.floor((dias%365)/30)
-
 const resto = dias - anos*365 - meses*30
 
 document.getElementById("contador").innerHTML =
@@ -225,7 +240,6 @@ anos+" anos "+meses+" meses "+resto+" dias"
 }
 
 setInterval(atualizar,1000)
-
 atualizar()
 
 </script>
