@@ -120,16 +120,11 @@ width:200px;
 
 <body>
 
-<!-- PLAYER GLOBAL -->
+<!-- MUSICA -->
 
-<iframe
-src="https://open.spotify.com/embed/track/3nHuKdFJZm78CoeBnDcFKe?autoplay=1"
-width="0"
-height="0"
-frameborder="0"
-allow="autoplay"
-style="position:absolute;opacity:0">
-</iframe>
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
 
 <!-- LOGIN -->
 
@@ -224,6 +219,8 @@ if(senha === "12032021"){
 document.getElementById("login").classList.remove("active")
 document.getElementById("c1").classList.add("active")
 
+iniciarMusica()
+
 }else{
 
 alert("Senha incorreta")
@@ -279,7 +276,7 @@ segundos + "s"
 
 }
 
-/* CONTADOR DE DIAS */
+/* CONTADOR DIAS */
 
 function atualizarDias(){
 
@@ -296,6 +293,34 @@ document.getElementById("contadorDias").innerHTML = dias + " dias"
 setInterval(atualizarContador,1000)
 atualizarContador()
 atualizarDias()
+
+/* MUSICA FADE IN */
+
+function iniciarMusica(){
+
+let audio = document.getElementById("musica")
+
+audio.volume = 0
+audio.play()
+
+let volume = 0
+
+let fade = setInterval(function(){
+
+if(volume < 1){
+
+volume += 0.02
+audio.volume = volume
+
+}else{
+
+clearInterval(fade)
+
+}
+
+},200)
+
+}
 
 </script>
 
