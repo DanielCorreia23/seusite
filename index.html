@@ -1,183 +1,233 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nós</title>
+<title>Nossa História</title>
 
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000;
-    color: white;
-    text-align: center;
-    overflow: hidden;
+
+body{
+margin:0;
+font-family:Arial;
+background:black;
+color:white;
+overflow:hidden;
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 0 40px rgba(255,255,255,0.05);
+.tela{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
 
-.fade-enter {
-    opacity: 0;
-    transform: scale(0.95);
+h1{
+font-size:40px;
 }
 
-.fade-enter-active {
-    opacity: 1;
-    transform: scale(1);
-    transition: all 1.2s ease;
+p{
+font-size:20px;
+opacity:0.8;
 }
 
-h2 {
-    font-weight: 300;
-    letter-spacing: 2px;
+button{
+margin-top:30px;
+padding:12px 30px;
+font-size:16px;
+border:none;
+border-radius:30px;
+background:#ff2e63;
+color:white;
+cursor:pointer;
 }
 
-input {
-    padding: 12px;
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    background: #111;
-    color: white;
-    text-align: center;
-    font-size: 16px;
+input{
+padding:10px;
+font-size:16px;
+border-radius:10px;
+border:none;
+text-align:center;
 }
 
-button {
-    margin-top: 20px;
-    padding: 12px;
-    width: 100%;
-    border-radius: 8px;
-    border: none;
-    background: white;
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+.slide{
+display:none;
 }
 
-button:hover {
-    background: #ccc;
+.ativo{
+display:flex;
 }
 
-.hidden {
-    display: none;
+#contador{
+font-size:35px;
+font-weight:bold;
+margin-top:20px;
 }
 
-#contador {
-    font-size: 20px;
-    margin-top: 20px;
-    font-weight: 300;
-    line-height: 1.6;
-}
-
-.spotify {
-    margin-top: 30px;
-}
 </style>
+
 </head>
 
 <body>
 
-<div class="container" id="login">
-    <h2>🔐</h2>
-    <p>Acesse.</p>
-    <input type="password" id="senha" placeholder="Digite a senha">
-    <button onclick="verificar()">Entrar</button>
-    <p id="erro" style="color:#888;"></p>
+<!-- LOGIN -->
+
+<div class="tela ativo" id="login">
+<h1>🔒</h1>
+<p>Digite a senha</p>
+
+<input type="password" id="senha">
+
+<button onclick="entrar()">Entrar</button>
 </div>
 
-<div class="container hidden fade-enter" id="conteudo">
-    <h2>❤️</h2>
 
-    <p>
-    Desde <strong>12 de março de 2021</strong>,
-    minha melhor escolha foi você.
-    </p>
+<!-- SLIDE 1 -->
 
-    <h3>Estamos juntos há:</h3>
-    <div id="contador"></div>
+<div class="tela slide" id="s1">
 
-    <p style="margin-top:25px;">
-    Eu escolheria você novamente.<br>
-    Todos os dias.
-    </p>
+<h1>Daniel ❤️ Stephanie</h1>
 
-    <div class="spotify">
-        <iframe 
-            style="border-radius:12px;"
-            src="https://open.spotify.com/embed/track/3nHuKdFJZm78CoeBnDcFKe"
-            width="100%" 
-            height="352" 
-            frameborder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-        </iframe>
-    </div>
+<p>Uma pequena retrospectiva<br>
+da nossa história</p>
 
-    <pre style="margin-top:25px; color:#888;">
-function amor() {
-    return "Para sempre.";
-}
-    </pre>
+<button onclick="proximo()">Começar</button>
+
 </div>
+
+
+<!-- SLIDE 2 -->
+
+<div class="tela slide" id="s2">
+
+<h1>Estamos juntos há</h1>
+
+<div id="contador"></div>
+
+<button onclick="proximo()">Continuar</button>
+
+</div>
+
+
+<!-- SLIDE 3 -->
+
+<div class="tela slide" id="s3">
+
+<h1>Momentos</h1>
+
+<p>
+Você transformou dias comuns<br>
+em memórias especiais.
+</p>
+
+<button onclick="proximo()">Continuar</button>
+
+</div>
+
+
+<!-- SLIDE 4 -->
+
+<div class="tela slide" id="s4">
+
+<h1>Nossa Música 🎵</h1>
+
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/3nHuKdFJZm78CoeBnDcFKe"
+width="300"
+height="80"
+frameBorder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+<button onclick="proximo()">Última</button>
+
+</div>
+
+
+<!-- SLIDE FINAL -->
+
+<div class="tela slide" id="s5">
+
+<h1>Stephanie ❤️</h1>
+
+<p>
+Obrigado por fazer parte<br>
+da minha vida desde<br>
+12/03/2021
+</p>
+
+<p>
+Eu te amo.
+</p>
+
+</div>
+
 
 <script>
-function verificar() {
-    var senhaCorreta = "12032021";
-    var senhaDigitada = document.getElementById("senha").value;
 
-    if (senhaDigitada === senhaCorreta) {
-        document.getElementById("login").classList.add("hidden");
+function entrar(){
 
-        var conteudo = document.getElementById("conteudo");
-        conteudo.classList.remove("hidden");
+let senha = document.getElementById("senha").value
 
-        setTimeout(() => {
-            conteudo.classList.add("fade-enter-active");
-        }, 50);
+if(senha === "12032021"){
 
-    } else {
-        document.getElementById("erro").innerText = "Senha incorreta.";
-    }
+document.getElementById("login").style.display="none"
+
+document.getElementById("s1").classList.add("ativo")
+
 }
 
-const dataCasamento = new Date("2021-03-12T00:00:00");
+else{
 
-function atualizarContador() {
-    const agora = new Date();
-    const diferenca = agora - dataCasamento;
+alert("Senha incorreta")
 
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
-    const segundos = Math.floor((diferenca / 1000) % 60);
-
-    document.getElementById("contador").innerHTML =
-        dias + " dias<br>" +
-        horas + " horas<br>" +
-        minutos + " minutos<br>" +
-        segundos + " segundos";
 }
 
-setInterval(atualizarContador, 1000);
-atualizarContador();
+}
+
+let atual=1
+
+function proximo(){
+
+document.getElementById("s"+atual).classList.remove("ativo")
+
+atual++
+
+document.getElementById("s"+atual).classList.add("ativo")
+
+}
+
+
+
+const inicio = new Date("2021-03-12")
+
+function atualizar(){
+
+const agora = new Date()
+
+const diff = agora - inicio
+
+const dias = Math.floor(diff / (1000*60*60*24))
+
+const anos = Math.floor(dias/365)
+
+const meses = Math.floor((dias%365)/30)
+
+const resto = dias - anos*365 - meses*30
+
+document.getElementById("contador").innerHTML =
+anos+" anos "+meses+" meses "+resto+" dias"
+
+}
+
+setInterval(atualizar,1000)
+
+atualizar()
+
 </script>
 
 </body>
