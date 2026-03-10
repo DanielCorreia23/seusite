@@ -1,222 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nossa História</title>
+
+<title>Daniel & Stephanie</title>
 
 <style>
 
 body{
 margin:0;
-font-family:system-ui;
-background:#0e0e0e;
+font-family:Arial, Helvetica, sans-serif;
+background:#000;
 color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 overflow:hidden;
 }
 
-.slide{
+/* brilho suave no fundo */
+
+body::before{
+content:"";
 position:absolute;
-width:100%;
+width:100vw;
 height:100vh;
+background:
+radial-gradient(circle at 20% 30%,rgba(255,255,255,0.08),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(255,255,255,0.05),transparent 40%);
+animation:move 18s linear infinite;
+}
+
+@keyframes move{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+
+/* card */
+
+.card{
+
+position:absolute;
+
+width:85%;
+max-width:420px;
+
+height:70vh;
+
+background:rgba(255,255,255,0.05);
+
+backdrop-filter:blur(20px);
+
+border-radius:30px;
+
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+
 text-align:center;
+
 padding:40px;
+
+box-shadow:0 30px 60px rgba(0,0,0,.6);
+
 opacity:0;
-transform:translateY(40px);
-transition:all .8s ease;
+transform:translateY(40px) scale(.95);
+
+transition:all .6s cubic-bezier(.16,1,.3,1);
+
 }
 
-.slide.ativo{
+.card.active{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0) scale(1);
 }
 
 h1{
 font-size:42px;
-margin-bottom:15px;
+margin:10px 0;
+}
+
+.big{
+font-size:64px;
+font-weight:bold;
+margin:10px 0;
 }
 
 p{
 font-size:20px;
-opacity:.85;
-max-width:400px;
+opacity:.9;
 }
 
+/* botão */
+
 button{
-margin-top:40px;
-padding:14px 34px;
-font-size:16px;
+
+margin-top:30px;
+
+padding:14px 30px;
+
 border:none;
-border-radius:30px;
-background:#ff2e63;
-color:white;
+
+border-radius:40px;
+
+background:white;
+
+color:black;
+
+font-weight:bold;
+
 cursor:pointer;
-transition:.3s;
+
+transition:.2s;
+
 }
 
 button:hover{
 transform:scale(1.05);
 }
 
-#login{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
+/* login */
 
 input{
+
 padding:12px;
+
 border-radius:10px;
+
 border:none;
-margin-top:15px;
+
 text-align:center;
-font-size:16px;
-}
 
-#contador{
-font-size:36px;
-font-weight:bold;
-margin-top:20px;
-}
+margin-top:10px;
 
-/* barra estilo stories */
-
-.progress{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-display:flex;
-gap:5px;
-padding:10px;
-}
-
-.bar{
-flex:1;
-height:4px;
-background:#444;
-border-radius:10px;
-overflow:hidden;
-}
-
-.fill{
-height:100%;
-width:0%;
-background:#1db954;
-transition:width 2s linear;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div id="login">
+<!-- LOGIN -->
+
+<div class="card active" id="login">
+
 <h2>Digite a senha</h2>
-<input type="password" id="senha">
-<button onclick="entrar()">Entrar</button>
+
+<input type="password" id="senha" placeholder="senha">
+
+<button id="btnEntrar">Entrar</button>
+
 </div>
 
-<div class="progress" id="progress" style="display:none">
-<div class="bar"><div class="fill"></div></div>
-<div class="bar"><div class="fill"></div></div>
-<div class="bar"><div class="fill"></div></div>
-<div class="bar"><div class="fill"></div></div>
-</div>
 
-<div class="slide" id="s1">
+<!-- SLIDE 1 -->
+
+<div class="card" id="c1">
+
 <h1>Daniel ❤️ Stephanie</h1>
-<p>Uma pequena retrospectiva da nossa história</p>
-<button onclick="proximo()">Começar</button>
+
+<p>Nosso Love Wrapped</p>
+
+<button onclick="next()">Começar</button>
+
 </div>
 
-<div class="slide" id="s2">
-<h1>Estamos juntos há</h1>
-<div id="contador"></div>
-<button onclick="proximo()">Continuar</button>
+
+<!-- SLIDE 2 -->
+
+<div class="card" id="c2">
+
+<p>Estamos juntos há</p>
+
+<div class="big" id="contador"></div>
+
+<button onclick="next()">Continuar</button>
+
 </div>
 
-<div class="slide" id="s3">
-<h1>Momentos</h1>
-<p>Você transformou dias comuns em memórias especiais.</p>
-<button onclick="proximo()">Continuar</button>
+
+<!-- SLIDE 3 -->
+
+<div class="card" id="c3">
+
+<div class="big">∞</div>
+
+<p>Momentos incríveis juntos</p>
+
+<button onclick="next()">Continuar</button>
+
 </div>
 
-<div class="slide" id="s4">
-<h1>Nossa música</h1>
+
+<!-- SLIDE 4 -->
+
+<div class="card" id="c4">
+
+<p>Nossa música</p>
 
 <iframe style="border-radius:12px"
 src="https://open.spotify.com/embed/track/3nHuKdFJZm78CoeBnDcFKe"
-width="300"
+width="280"
 height="80"
-frameBorder="0"
-allowfullscreen=""
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+frameborder="0">
 </iframe>
 
-<button onclick="proximo()">Última</button>
+<button onclick="next()">Último</button>
+
 </div>
 
-<div class="slide" id="s5">
+
+<!-- SLIDE FINAL -->
+
+<div class="card" id="c5">
+
 <h1>Stephanie ❤️</h1>
+
 <p>Obrigado por fazer parte da minha vida desde 12/03/2021</p>
-<p>Eu te amo.</p>
+
 </div>
+
 
 <script>
 
 let atual = 1
-const total = 5
 
-function entrar(){
+document.getElementById("btnEntrar").addEventListener("click", function(){
 
 let senha = document.getElementById("senha").value
 
 if(senha === "12032021"){
 
-document.getElementById("login").style.display="none"
-document.getElementById("progress").style.display="flex"
+document.getElementById("login").classList.remove("active")
 
-mostrar()
+document.getElementById("c1").classList.add("active")
 
 }else{
+
 alert("Senha incorreta")
-}
 
 }
 
-function mostrar(){
-
-document.querySelectorAll(".slide").forEach(s=>s.classList.remove("ativo"))
-
-document.getElementById("s"+atual).classList.add("ativo")
-
-animarBarra()
-
-}
-
-function proximo(){
-
-if(atual < total){
-atual++
-mostrar()
-}
-
-}
-
-function animarBarra(){
-
-const bars = document.querySelectorAll(".fill")
-
-bars.forEach((b,i)=>{
-b.style.width = i < atual ? "100%" : "0%"
 })
+
+function next(){
+
+document.getElementById("c"+atual).classList.remove("active")
+
+atual++
+
+let prox = document.getElementById("c"+atual)
+
+if(prox){
+prox.classList.add("active")
+}
 
 }
 
@@ -227,19 +269,15 @@ const inicio = new Date("2021-03-12")
 function atualizar(){
 
 const agora = new Date()
+
 const diff = agora - inicio
 
 const dias = Math.floor(diff / (1000*60*60*24))
-const anos = Math.floor(dias/365)
-const meses = Math.floor((dias%365)/30)
-const resto = dias - anos*365 - meses*30
 
-document.getElementById("contador").innerHTML =
-anos+" anos "+meses+" meses "+resto+" dias"
+document.getElementById("contador").innerHTML = dias + " dias"
 
 }
 
-setInterval(atualizar,1000)
 atualizar()
 
 </script>
