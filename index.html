@@ -89,14 +89,13 @@ pointer-events:auto;
 }
 
 h1{
-font-size:36px;
-margin-bottom:10px;
+font-size:32px;
 }
 
 .big{
-font-size:40px;
+font-size:36px;
 font-weight:bold;
-margin-top:10px;
+margin-top:15px;
 }
 
 p{
@@ -143,17 +142,18 @@ from{transform:scale(1)}
 to{transform:scale(1.08)}
 }
 
-/* FOTO OVERLAY */
+/* CAPTION FOTO */
 
-.story::after{
-content:"";
+.caption{
 position:absolute;
-bottom:0;
-left:0;
-right:0;
-height:40%;
-background:linear-gradient(transparent,rgba(0,0,0,.7));
-border-radius:20px;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+font-size:22px;
+font-weight:bold;
+text-align:center;
+width:85%;
+text-shadow:0 3px 10px rgba(0,0,0,0.8);
 }
 
 </style>
@@ -182,7 +182,7 @@ border-radius:20px;
 
 </div>
 
-<!-- SLIDE 1 -->
+<!-- CONTADOR -->
 
 <div class="card" id="c1">
 
@@ -196,7 +196,7 @@ border-radius:20px;
 
 </div>
 
-<!-- SLIDE 2 -->
+<!-- TEXTO 1 -->
 
 <div class="card" id="c2">
 
@@ -206,7 +206,7 @@ border-radius:20px;
 
 </div>
 
-<!-- SLIDE 3 -->
+<!-- TEXTO 2 -->
 
 <div class="card" id="c3">
 
@@ -216,7 +216,7 @@ border-radius:20px;
 
 </div>
 
-<!-- SLIDE 4 -->
+<!-- TEXTO 3 -->
 
 <div class="card" id="c4">
 
@@ -228,29 +228,72 @@ border-radius:20px;
 
 </div>
 
-<!-- FINAL -->
+<!-- TEXTO FINAL -->
 
 <div class="card" id="c5">
 
-<h1>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</h1>
+<p>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</p>
 
-<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história. Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes. Eu te amo demais, e vou te amar para todo o sempre. Feliz nosso dia 12! </p>
+<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história.</p>
+
+<p>Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes.</p>
+
+<p>Eu te amo demais, e vou te amar para todo o sempre.</p>
+
+<p>Feliz nosso dia 12!</p>
 
 <button onclick="next()">Ver nossas fotos</button>
 
 </div>
 
-<!-- STORIES -->
+<!-- STORIES FOTOS -->
 
-<div class="card story" id="c6"><img src="foto1.jpg"></div>
-<div class="card story" id="c7"><img src="foto2.jpg"></div>
-<div class="card story" id="c8"><img src="foto3.jpg"></div>
-<div class="card story" id="c9"><img src="foto4.jpg"></div>
-<div class="card story" id="c10"><img src="foto5.jpg"></div>
-<div class="card story" id="c11"><img src="foto6.jpg"></div>
-<div class="card story" id="c12"><img src="foto7.jpg"></div>
-<div class="card story" id="c13"><img src="foto8.jpg"></div>
-<div class="card story" id="c14"><img src="foto9.jpg"></div>
+<div class="card story" id="c6">
+<img src="foto1.jpg">
+<div class="caption">Um dos primeiros momentos juntos</div>
+</div>
+
+<div class="card story" id="c7">
+<img src="foto2.jpg">
+<div class="caption">Construindo nossa história</div>
+</div>
+
+<div class="card story" id="c8">
+<img src="foto3.jpg">
+<div class="caption">Cada momento ao seu lado vale tudo</div>
+</div>
+
+<div class="card story" id="c9">
+<img src="foto4.jpg">
+<div class="caption">Mais uma memória que eu guardo pra sempre</div>
+</div>
+
+<div class="card story" id="c10">
+<img src="foto5.jpg">
+<div class="caption">Nós dois contra o mundo</div>
+</div>
+
+<div class="card story" id="c11">
+<img src="foto6.jpg">
+<div class="caption">Seu sorriso sempre foi meu lugar favorito</div>
+</div>
+
+<div class="card story" id="c12">
+<img src="foto7.jpg">
+<div class="caption">Mais capítulos da nossa história</div>
+</div>
+
+<div class="card story" id="c13">
+<img src="foto8.jpg">
+<div class="caption">Cada ano ao seu lado vale mais que mil</div>
+</div>
+
+<div class="card story" id="c14">
+<img src="foto9.jpg">
+<div class="caption">E ainda estamos só começando</div>
+</div>
+
+<!-- FINAL -->
 
 <div class="card" id="c15">
 
@@ -260,6 +303,8 @@ border-radius:20px;
 
 <p>Todas as vezes.</p>
 
+<p>Em qualquer vida.</p>
+
 </div>
 
 <script>
@@ -268,12 +313,15 @@ let atual=1
 let total=15
 let auto
 
-/* CRIAR STORIES BAR */
+/* STORIES BAR */
 
 for(let i=0;i<total;i++){
+
 let seg=document.createElement("div")
 seg.className="seg"
+
 document.getElementById("storiesBar").appendChild(seg)
+
 }
 
 function updateProgress(){
@@ -287,6 +335,8 @@ if(i<atual) s.classList.add("active")
 
 }
 
+/* LOGIN */
+
 function entrar(){
 
 let senha=document.getElementById("senha").value
@@ -296,8 +346,8 @@ if(senha==="12032021"){
 document.getElementById("login").classList.remove("active")
 document.getElementById("c1").classList.add("active")
 
-iniciarMusica()
 updateProgress()
+iniciarMusica()
 
 }else{
 
@@ -306,6 +356,8 @@ alert("Senha incorreta")
 }
 
 }
+
+/* NEXT */
 
 function next(){
 
@@ -330,11 +382,11 @@ auto=setTimeout(next,3500)
 
 }
 
-/* AVANÇAR AO CLICAR */
+/* CLICK AVANÇAR */
 
-document.addEventListener("click",function(e){
+document.addEventListener("click",function(){
 
-if(atual>=1 && atual<total){
+if(atual<total){
 next()
 }
 
@@ -365,6 +417,7 @@ let minutos=Math.floor(segundos/60)
 segundos-=minutos*60
 
 document.getElementById("contadorCompleto").innerHTML=
+
 anos+" anos<br>"+
 dias+" dias<br>"+
 horas+"h "+
@@ -412,6 +465,7 @@ clearInterval(fade)
 for(let i=0;i<25;i++){
 
 let s=document.createElement("div")
+
 s.className="sunflower"
 s.innerHTML="🌻"
 
