@@ -25,42 +25,26 @@ overflow:hidden;
 /* CARD */
 
 .card{
-
 position:absolute;
-
 top:50%;
 left:50%;
-
 transform:translate(-50%,-50%) translateX(40px);
-
 width:420px;
 max-width:90%;
-
 background:#111;
-
 border-radius:20px;
-
 padding:40px;
-
 text-align:center;
-
 box-shadow:0 10px 40px rgba(0,0,0,0.6);
-
 opacity:0;
 pointer-events:none;
-
 transition:all .5s ease;
-
 }
 
 .card.active{
-
 opacity:1;
-
 transform:translate(-50%,-50%) translateX(0);
-
 pointer-events:auto;
-
 }
 
 h1{
@@ -79,39 +63,64 @@ font-size:18px;
 }
 
 button{
-
 margin-top:20px;
-
 padding:12px 25px;
-
 border:none;
-
 border-radius:30px;
-
 background:white;
-
 color:black;
-
 font-weight:bold;
-
 cursor:pointer;
-
 }
 
 input{
-
 padding:10px;
-
 border-radius:8px;
-
 border:none;
-
 text-align:center;
-
 margin-top:10px;
-
 width:200px;
+}
 
+/* GALERIA */
+
+.galeria{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:10px;
+margin-top:20px;
+}
+
+.galeria img{
+width:100%;
+border-radius:10px;
+cursor:pointer;
+transition:transform .3s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
 }
 
 </style>
@@ -125,6 +134,12 @@ width:200px;
 <audio id="musica" loop preload="auto">
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
+
+<!-- LIGHTBOX FOTO -->
+
+<div id="lightbox" onclick="fecharFoto()">
+<img id="fotoGrande">
+</div>
 
 <!-- LOGIN -->
 
@@ -160,7 +175,7 @@ width:200px;
 
 <div class="card" id="c2">
 
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.</p>
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida...</p>
 
 <button onclick="next()">Continuar</button>
 
@@ -171,7 +186,7 @@ width:200px;
 
 <div class="card" id="c3">
 
-<p>Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.</p>
+<p>Eu sou o homem mais sortudo desse mundo...</p>
 
 <button onclick="next()">Continuar</button>
 
@@ -182,7 +197,7 @@ width:200px;
 
 <div class="card" id="c4">
 
-<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.</p>
+<p>Você é a melhor pessoa desse mundo...</p>
 
 <p>Eu te amo muito você!</p>
 
@@ -195,9 +210,31 @@ width:200px;
 
 <div class="card" id="c5">
 
-<h1>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</h1>
+<h1>E já que tá tocando a música...</h1>
 
-<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história. Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes. Eu te amo demais, e vou te amar para todo o sempre. Feliz nosso dia 12! </p>
+<p>Obrigado por me conceder essa chance de viver uma vida com você.</p>
+
+<button onclick="next()">Ver nossas fotos ❤️</button>
+
+</div>
+
+
+<!-- GALERIA -->
+
+<div class="card" id="c6">
+
+<h1>Nossos Momentos ❤️</h1>
+
+<div class="galeria">
+
+<img src="foto1.jpg" onclick="abrirFoto(this)">
+<img src="foto2.jpg" onclick="abrirFoto(this)">
+<img src="foto3.jpg" onclick="abrirFoto(this)">
+<img src="foto4.jpg" onclick="abrirFoto(this)">
+<img src="foto5.jpg" onclick="abrirFoto(this)">
+<img src="foto6.jpg" onclick="abrirFoto(this)">
+
+</div>
 
 </div>
 
@@ -239,7 +276,7 @@ prox.classList.add("active")
 
 }
 
-/* CONTADOR COMPLETO */
+/* CONTADOR */
 
 const inicio = new Date("2021-03-12T00:00:00")
 
@@ -272,25 +309,10 @@ segundos + "s"
 
 }
 
-/* CONTADOR DIAS */
-
-function atualizarDias(){
-
-const agora = new Date()
-
-const diff = agora - inicio
-
-const dias = Math.floor(diff / (1000*60*60*24))
-
-document.getElementById("contadorDias").innerHTML = dias + " dias"
-
-}
-
 setInterval(atualizarContador,1000)
 atualizarContador()
-atualizarDias()
 
-/* MUSICA FADE IN */
+/* MUSICA */
 
 function iniciarMusica(){
 
@@ -317,11 +339,22 @@ clearInterval(fade)
 
 },200)
 
-}).catch(error=>{
-
-console.log("Erro ao tocar música:", error)
-
 })
+
+}
+
+/* GALERIA FOTO */
+
+function abrirFoto(img){
+
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("fotoGrande").src = img.src
+
+}
+
+function fecharFoto(){
+
+document.getElementById("lightbox").style.display="none"
 
 }
 
