@@ -22,7 +22,7 @@ align-items:center;
 overflow:hidden;
 }
 
-/* GIRASSOIS */
+/* GIRASSOIS FUNDO */
 
 .sunflower{
 position:fixed;
@@ -122,6 +122,46 @@ margin-top:10px;
 width:200px;
 }
 
+/* GIRASSOL LOGIN */
+
+.sunflowerLock{
+font-size:50px;
+margin-bottom:10px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+}
+
+/* PORTA */
+
+#porta{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+transform:scaleX(0);
+pointer-events:none;
+z-index:2000;
+}
+
+#porta.open{
+animation:abrirPorta 1.2s forwards;
+}
+
+@keyframes abrirPorta{
+
+0%{transform:scaleX(0)}
+50%{transform:scaleX(1)}
+100%{transform:scaleX(0)}
+
+}
+
 /* STORIES */
 
 .story{
@@ -142,7 +182,7 @@ from{transform:scale(1)}
 to{transform:scale(1.08)}
 }
 
-/* CAPTION FOTO */
+/* TEXTO FOTO */
 
 .caption{
 position:absolute;
@@ -168,11 +208,17 @@ text-shadow:0 3px 10px rgba(0,0,0,0.8);
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
+<div id="porta"></div>
+
 <!-- LOGIN -->
 
 <div class="card active" id="login">
 
-<h2>Digite a senha (Dica: o dia mais feliz da minha vida)</h2>
+<div class="sunflowerLock">🌻</div>
+
+<h2>Digite a senha</h2>
+
+<p>(Dica: o dia mais feliz da minha vida)</p>
 
 <input type="password" id="senha">
 
@@ -196,57 +242,41 @@ text-shadow:0 3px 10px rgba(0,0,0,0.8);
 
 </div>
 
-<!-- TEXTO 1 -->
+<!-- TEXTOS -->
 
 <div class="card" id="c2">
 
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.</p>
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida...</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
-
-<!-- TEXTO 2 -->
 
 <div class="card" id="c3">
 
-<p>Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.</p>
+<p>Eu sou o homem mais sortudo desse mundo...</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
 
-<!-- TEXTO 3 -->
-
 <div class="card" id="c4">
 
-<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.</p>
-
-<p>Eu te amo muito você!</p>
+<p>Você é a melhor pessoa desse mundo...</p>
 
 <button onclick="next()">Último</button>
 
 </div>
 
-<!-- TEXTO FINAL -->
-
 <div class="card" id="c5">
 
-<p>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</p>
-
-<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história.</p>
-
-<p>Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes.</p>
-
-<p>Eu te amo demais, e vou te amar para todo o sempre.</p>
-
-<p>Feliz nosso dia 12!</p>
+<p>E já que tá tocando a música...</p>
 
 <button onclick="next()">Ver nossas fotos</button>
 
 </div>
 
-<!-- STORIES FOTOS -->
+<!-- FOTOS -->
 
 <div class="card story" id="c6">
 <img src="foto1.jpg">
@@ -309,17 +339,16 @@ text-shadow:0 3px 10px rgba(0,0,0,0.8);
 
 <script>
 
-let atual=1
+let atual=0
 let total=15
 let auto
 
-/* STORIES BAR */
+/* PROGRESS BAR */
 
 for(let i=0;i<total;i++){
 
 let seg=document.createElement("div")
 seg.className="seg"
-
 document.getElementById("storiesBar").appendChild(seg)
 
 }
@@ -343,11 +372,21 @@ let senha=document.getElementById("senha").value
 
 if(senha==="12032021"){
 
+let porta=document.getElementById("porta")
+
+porta.classList.add("open")
+
+setTimeout(()=>{
+
 document.getElementById("login").classList.remove("active")
 document.getElementById("c1").classList.add("active")
 
+atual=1
+
 updateProgress()
 iniciarMusica()
+
+},900)
 
 }else{
 
@@ -384,7 +423,13 @@ auto=setTimeout(next,3500)
 
 /* CLICK AVANÇAR */
 
-document.addEventListener("click",function(){
+document.addEventListener("click",function(e){
+
+if(atual===0) return
+
+let tag=e.target.tagName
+
+if(tag==="BUTTON" || tag==="INPUT") return
 
 if(atual<total){
 next()
@@ -427,7 +472,6 @@ segundos+"s"
 }
 
 setInterval(atualizarContador,1000)
-atualizarContador()
 
 /* MUSICA */
 
