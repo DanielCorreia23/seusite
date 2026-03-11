@@ -22,6 +22,33 @@ align-items:center;
 overflow:hidden;
 }
 
+/* GIRASSOIS */
+
+.sunflower{
+position:fixed;
+font-size:16px;
+opacity:0.25;
+animation:flutuar linear infinite;
+}
+
+@keyframes flutuar{
+0%{transform:translateY(110vh) rotate(0deg)}
+100%{transform:translateY(-10vh) rotate(360deg)}
+}
+
+/* PROGRESS BAR */
+
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:white;
+width:0%;
+z-index:999;
+transition:width .4s;
+}
+
 /* CARD */
 
 .card{
@@ -82,45 +109,24 @@ margin-top:10px;
 width:200px;
 }
 
-/* GALERIA */
+/* STORIES */
 
-.galeria{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:10px;
-margin-top:20px;
+.story{
+padding:0;
+overflow:hidden;
 }
 
-.galeria img{
+.story img{
 width:100%;
-border-radius:10px;
-cursor:pointer;
-transition:transform .3s;
+height:520px;
+object-fit:cover;
+border-radius:20px;
+animation:zoom 8s ease-in-out infinite alternate;
 }
 
-.galeria img:hover{
-transform:scale(1.05);
-}
-
-/* LIGHTBOX */
-
-#lightbox{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.9);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-#lightbox img{
-max-width:90%;
-max-height:90%;
-border-radius:10px;
+@keyframes zoom{
+from{transform:scale(1)}
+to{transform:scale(1.08)}
 }
 
 </style>
@@ -129,17 +135,11 @@ border-radius:10px;
 
 <body>
 
-<!-- MUSICA -->
+<div id="progress"></div>
 
 <audio id="musica" loop preload="auto">
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
-
-<!-- LIGHTBOX FOTO -->
-
-<div id="lightbox" onclick="fecharFoto()">
-<img id="fotoGrande">
-</div>
 
 <!-- LOGIN -->
 
@@ -155,7 +155,6 @@ border-radius:10px;
 
 </div>
 
-
 <!-- SLIDE 1 -->
 
 <div class="card" id="c1">
@@ -170,34 +169,31 @@ border-radius:10px;
 
 </div>
 
-
 <!-- SLIDE 2 -->
 
 <div class="card" id="c2">
 
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida...</p>
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
-
 
 <!-- SLIDE 3 -->
 
 <div class="card" id="c3">
 
-<p>Eu sou o homem mais sortudo desse mundo...</p>
+<p>Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
 
-
 <!-- SLIDE 4 -->
 
 <div class="card" id="c4">
 
-<p>Você é a melhor pessoa desse mundo...</p>
+<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.</p>
 
 <p>Eu te amo muito você!</p>
 
@@ -205,54 +201,47 @@ border-radius:10px;
 
 </div>
 
-
 <!-- FINAL -->
 
 <div class="card" id="c5">
 
-<h1>E já que tá tocando a música...</h1>
+<h1>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</h1>
 
-<p>Obrigado por me conceder essa chance de viver uma vida com você.</p>
+<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história. Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes. Eu te amo demais, e vou te amar para todo o sempre. Feliz nosso dia 12! </p>
 
-<button onclick="next()">Ver nossas fotos ❤️</button>
-
-</div>
-
-
-<!-- GALERIA -->
-
-<div class="card" id="c6">
-
-<h1>Nossos Momentos ❤️</h1>
-
-<div class="galeria">
-
-<img src="foto1.jpg" onclick="abrirFoto(this)">
-<img src="foto2.jpg" onclick="abrirFoto(this)">
-<img src="foto3.jpg" onclick="abrirFoto(this)">
-<img src="foto4.jpg" onclick="abrirFoto(this)">
-<img src="foto5.jpg" onclick="abrirFoto(this)">
-<img src="foto6.jpg" onclick="abrirFoto(this)">
+<button onclick="next()">Ver nossas fotos</button>
 
 </div>
 
-</div>
+<!-- STORIES -->
 
+<div class="card story" id="c6"><img src="foto1.jpg"></div>
+<div class="card story" id="c7"><img src="foto2.jpg"></div>
+<div class="card story" id="c8"><img src="foto3.jpg"></div>
+<div class="card story" id="c9"><img src="foto4.jpg"></div>
+<div class="card story" id="c10"><img src="foto5.jpg"></div>
+<div class="card story" id="c11"><img src="foto6.jpg"></div>
+<div class="card story" id="c12"><img src="foto7.jpg"></div>
+<div class="card story" id="c13"><img src="foto8.jpg"></div>
+<div class="card story" id="c14"><img src="foto9.jpg"></div>
 
 <script>
 
-let atual = 1
+let atual=1
+let total=14
+let auto
 
 function entrar(){
 
-let senha = document.getElementById("senha").value
+let senha=document.getElementById("senha").value
 
-if(senha === "12032021"){
+if(senha==="12032021"){
 
 document.getElementById("login").classList.remove("active")
 document.getElementById("c1").classList.add("active")
 
 iniciarMusica()
+updateProgress()
 
 }else{
 
@@ -264,48 +253,64 @@ alert("Senha incorreta")
 
 function next(){
 
+clearTimeout(auto)
+
 document.getElementById("c"+atual).classList.remove("active")
 
 atual++
 
-let prox = document.getElementById("c"+atual)
+let prox=document.getElementById("c"+atual)
 
 if(prox){
+
 prox.classList.add("active")
+updateProgress()
+
+if(atual>=6){
+auto=setTimeout(next,4000)
 }
+
+}
+
+}
+
+function updateProgress(){
+
+let porcent=(atual/total)*100
+document.getElementById("progress").style.width=porcent+"%"
 
 }
 
 /* CONTADOR */
 
-const inicio = new Date("2021-03-12T00:00:00")
+const inicio=new Date("2021-03-12T00:00:00")
 
 function atualizarContador(){
 
-const agora = new Date()
+const agora=new Date()
 
-let diff = agora - inicio
+let diff=agora-inicio
 
-let segundos = Math.floor(diff / 1000)
+let segundos=Math.floor(diff/1000)
 
-let anos = Math.floor(segundos / 31536000)
-segundos -= anos * 31536000
+let anos=Math.floor(segundos/31536000)
+segundos-=anos*31536000
 
-let dias = Math.floor(segundos / 86400)
-segundos -= dias * 86400
+let dias=Math.floor(segundos/86400)
+segundos-=dias*86400
 
-let horas = Math.floor(segundos / 3600)
-segundos -= horas * 3600
+let horas=Math.floor(segundos/3600)
+segundos-=horas*3600
 
-let minutos = Math.floor(segundos / 60)
-segundos -= minutos * 60
+let minutos=Math.floor(segundos/60)
+segundos-=minutos*60
 
-document.getElementById("contadorCompleto").innerHTML =
-anos + " anos<br>" +
-dias + " dias<br>" +
-horas + "h " +
-minutos + "m " +
-segundos + "s"
+document.getElementById("contadorCompleto").innerHTML=
+anos+" anos<br>"+
+dias+" dias<br>"+
+horas+"h "+
+minutos+"m "+
+segundos+"s"
 
 }
 
@@ -316,20 +321,20 @@ atualizarContador()
 
 function iniciarMusica(){
 
-let audio = document.getElementById("musica")
+let audio=document.getElementById("musica")
 
-audio.volume = 0
+audio.volume=0
 
 audio.play().then(()=>{
 
-let volume = 0
+let volume=0
 
-let fade = setInterval(function(){
+let fade=setInterval(function(){
 
-if(volume < 1){
+if(volume<1){
 
-volume += 0.02
-audio.volume = volume
+volume+=0.02
+audio.volume=volume
 
 }else{
 
@@ -343,18 +348,19 @@ clearInterval(fade)
 
 }
 
-/* GALERIA FOTO */
+/* GIRASSOIS */
 
-function abrirFoto(img){
+for(let i=0;i<25;i++){
 
-document.getElementById("lightbox").style.display="flex"
-document.getElementById("fotoGrande").src = img.src
+let s=document.createElement("div")
+s.className="sunflower"
+s.innerHTML="🌻"
 
-}
+s.style.left=Math.random()*100+"vw"
+s.style.animationDuration=(10+Math.random()*15)+"s"
+s.style.fontSize=(10+Math.random()*14)+"px"
 
-function fecharFoto(){
-
-document.getElementById("lightbox").style.display="none"
+document.body.appendChild(s)
 
 }
 
