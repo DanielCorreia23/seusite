@@ -72,11 +72,7 @@ background:#111;
 border-radius:20px;
 padding:40px;
 text-align:center;
-
-box-shadow:
-0 10px 40px rgba(0,0,0,0.6),
-0 0 20px rgba(255,255,255,0.05);
-
+box-shadow:0 10px 40px rgba(0,0,0,0.6);
 opacity:0;
 pointer-events:none;
 transition:all .6s ease;
@@ -88,9 +84,7 @@ transform:translate(-50%,-50%) scale(1);
 pointer-events:auto;
 }
 
-h1{
-font-size:32px;
-}
+h1{font-size:32px;}
 
 .big{
 font-size:36px;
@@ -98,9 +92,7 @@ font-weight:bold;
 margin-top:15px;
 }
 
-p{
-font-size:18px;
-}
+p{font-size:18px;}
 
 button{
 margin-top:20px;
@@ -155,11 +147,9 @@ animation:abrirPorta 1.2s forwards;
 }
 
 @keyframes abrirPorta{
-
 0%{transform:scaleX(0)}
 50%{transform:scaleX(1)}
 100%{transform:scaleX(0)}
-
 }
 
 /* STORIES */
@@ -181,8 +171,6 @@ animation:zoom 8s ease-in-out infinite alternate;
 from{transform:scale(1)}
 to{transform:scale(1.08)}
 }
-
-/* TEXTO FOTO */
 
 .caption{
 position:absolute;
@@ -217,7 +205,6 @@ text-shadow:0 3px 10px rgba(0,0,0,0.8);
 <div class="sunflowerLock">🌻</div>
 
 <h2>Digite a senha</h2>
-
 <p>(Dica: o dia mais feliz da minha vida)</p>
 
 <input type="password" id="senha">
@@ -242,35 +229,63 @@ text-shadow:0 3px 10px rgba(0,0,0,0.8);
 
 </div>
 
-<!-- TEXTOS -->
+<!-- TEXTO 1 -->
 
 <div class="card" id="c2">
 
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida...</p>
+<p>
+Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.
+</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
+
+<!-- TEXTO 2 -->
 
 <div class="card" id="c3">
 
-<p>Eu sou o homem mais sortudo desse mundo...</p>
+<p>
+Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.
+</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
 
+<!-- TEXTO 3 -->
+
 <div class="card" id="c4">
 
-<p>Você é a melhor pessoa desse mundo...</p>
+<p>
+Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.
+</p>
+
+<p>Eu te amo muito você!</p>
 
 <button onclick="next()">Último</button>
 
 </div>
 
+<!-- TEXTO FINAL -->
+
 <div class="card" id="c5">
 
-<p>E já que tá tocando a música...</p>
+<p>
+E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.
+</p>
+
+<p>
+Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história.
+</p>
+
+<p>
+Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes.
+</p>
+
+<p>
+Eu te amo demais, e vou te amar para todo o sempre. Feliz nosso dia 12!
+</p>
 
 <button onclick="next()">Ver nossas fotos</button>
 
@@ -278,50 +293,15 @@ text-shadow:0 3px 10px rgba(0,0,0,0.8);
 
 <!-- FOTOS -->
 
-<div class="card story" id="c6">
-<img src="foto1.jpg">
-<div class="caption">Um dos primeiros momentos juntos</div>
-</div>
-
-<div class="card story" id="c7">
-<img src="foto2.jpg">
-<div class="caption">Construindo nossa história</div>
-</div>
-
-<div class="card story" id="c8">
-<img src="foto3.jpg">
-<div class="caption">Cada momento ao seu lado vale tudo</div>
-</div>
-
-<div class="card story" id="c9">
-<img src="foto4.jpg">
-<div class="caption">Mais uma memória que eu guardo pra sempre</div>
-</div>
-
-<div class="card story" id="c10">
-<img src="foto5.jpg">
-<div class="caption">Nós dois contra o mundo</div>
-</div>
-
-<div class="card story" id="c11">
-<img src="foto6.jpg">
-<div class="caption">Seu sorriso sempre foi meu lugar favorito</div>
-</div>
-
-<div class="card story" id="c12">
-<img src="foto7.jpg">
-<div class="caption">Mais capítulos da nossa história</div>
-</div>
-
-<div class="card story" id="c13">
-<img src="foto8.jpg">
-<div class="caption">Cada ano ao seu lado vale mais que mil</div>
-</div>
-
-<div class="card story" id="c14">
-<img src="foto9.jpg">
-<div class="caption">E ainda estamos só começando</div>
-</div>
+<div class="card story" id="c6"><img src="foto1.jpg"><div class="caption">Um dos primeiros momentos juntos</div></div>
+<div class="card story" id="c7"><img src="foto2.jpg"><div class="caption">Construindo nossa história</div></div>
+<div class="card story" id="c8"><img src="foto3.jpg"><div class="caption">Cada momento ao seu lado vale tudo</div></div>
+<div class="card story" id="c9"><img src="foto4.jpg"><div class="caption">Mais uma memória que eu guardo pra sempre</div></div>
+<div class="card story" id="c10"><img src="foto5.jpg"><div class="caption">Nós dois contra o mundo</div></div>
+<div class="card story" id="c11"><img src="foto6.jpg"><div class="caption">Seu sorriso sempre foi meu lugar favorito</div></div>
+<div class="card story" id="c12"><img src="foto7.jpg"><div class="caption">Mais capítulos da nossa história</div></div>
+<div class="card story" id="c13"><img src="foto8.jpg"><div class="caption">Cada ano ao seu lado vale mais que mil</div></div>
+<div class="card story" id="c14"><img src="foto9.jpg"><div class="caption">E ainda estamos só começando</div></div>
 
 <!-- FINAL -->
 
@@ -343,28 +323,17 @@ let atual=0
 let total=15
 let auto
 
-/* PROGRESS BAR */
-
 for(let i=0;i<total;i++){
-
 let seg=document.createElement("div")
 seg.className="seg"
-document.getElementById("storiesBar").appendChild(seg)
-
+storiesBar.appendChild(seg)
 }
 
 function updateProgress(){
-
-let segs=document.querySelectorAll(".seg")
-
-segs.forEach((s,i)=>{
-s.classList.remove("active")
-if(i<atual) s.classList.add("active")
+document.querySelectorAll(".seg").forEach((s,i)=>{
+s.classList.toggle("active",i<atual)
 })
-
 }
-
-/* LOGIN */
 
 function entrar(){
 
@@ -372,31 +341,22 @@ let senha=document.getElementById("senha").value
 
 if(senha==="12032021"){
 
-let porta=document.getElementById("porta")
-
-porta.classList.add("open")
+document.getElementById("porta").classList.add("open")
 
 setTimeout(()=>{
 
-document.getElementById("login").classList.remove("active")
-document.getElementById("c1").classList.add("active")
+login.classList.remove("active")
+c1.classList.add("active")
 
 atual=1
-
 updateProgress()
 iniciarMusica()
 
 },900)
 
-}else{
-
-alert("Senha incorreta")
+}else alert("Senha incorreta")
 
 }
-
-}
-
-/* NEXT */
 
 function next(){
 
@@ -413,98 +373,58 @@ if(prox){
 prox.classList.add("active")
 updateProgress()
 
-if(atual>=6 && atual<=14){
+if(atual>=6 && atual<=14)
 auto=setTimeout(next,3500)
-}
 
 }
 
 }
-
-/* CLICK AVANÇAR */
 
 document.addEventListener("click",function(e){
 
 if(atual===0) return
 
-let tag=e.target.tagName
+if(e.target.tagName==="BUTTON"||e.target.tagName==="INPUT") return
 
-if(tag==="BUTTON" || tag==="INPUT") return
-
-if(atual<total){
-next()
-}
+if(atual<total) next()
 
 })
-
-/* CONTADOR */
 
 const inicio=new Date("2021-03-12T00:00:00")
 
-function atualizarContador(){
+setInterval(()=>{
 
-const agora=new Date()
+let diff=new Date()-inicio
 
-let diff=agora-inicio
+let s=Math.floor(diff/1000)
 
-let segundos=Math.floor(diff/1000)
+let a=Math.floor(s/31536000);s-=a*31536000
+let d=Math.floor(s/86400);s-=d*86400
+let h=Math.floor(s/3600);s-=h*3600
+let m=Math.floor(s/60);s-=m*60
 
-let anos=Math.floor(segundos/31536000)
-segundos-=anos*31536000
+contadorCompleto.innerHTML=a+" anos<br>"+d+" dias<br>"+h+"h "+m+"m "+s+"s"
 
-let dias=Math.floor(segundos/86400)
-segundos-=dias*86400
-
-let horas=Math.floor(segundos/3600)
-segundos-=horas*3600
-
-let minutos=Math.floor(segundos/60)
-segundos-=minutos*60
-
-document.getElementById("contadorCompleto").innerHTML=
-
-anos+" anos<br>"+
-dias+" dias<br>"+
-horas+"h "+
-minutos+"m "+
-segundos+"s"
-
-}
-
-setInterval(atualizarContador,1000)
-
-/* MUSICA */
+},1000)
 
 function iniciarMusica(){
 
-let audio=document.getElementById("musica")
+let a=musica
+a.volume=0
+a.play()
 
-audio.volume=0
+let v=0
 
-audio.play().then(()=>{
+let fade=setInterval(()=>{
 
-let volume=0
-
-let fade=setInterval(function(){
-
-if(volume<1){
-
-volume+=0.02
-audio.volume=volume
-
-}else{
-
-clearInterval(fade)
-
-}
+if(v<1){
+v+=0.02
+a.volume=v
+}else clearInterval(fade)
 
 },200)
 
-})
-
 }
-
-/* GIRASSOIS */
 
 for(let i=0;i<25;i++){
 
