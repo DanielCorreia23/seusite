@@ -89,20 +89,6 @@ object-fit:cover;
 border-radius:20px;
 }
 
-.caption{
-position:absolute;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-width:85%;
-background:rgba(0,0,0,0.45);
-backdrop-filter:blur(6px);
-padding:14px 18px;
-border-radius:14px;
-font-size:20px;
-text-align:center;
-}
-
 h1{font-size:32px;}
 
 .big{
@@ -148,14 +134,11 @@ width:200px;
 </audio>
 
 <div class="card active" id="login">
-
 <h2>Digite a senha</h2>
 <h3>(Dica: o dia mais feliz da minha vida)</h3>
-
 <input type="password" id="senha">
 <br>
 <button onclick="entrar()">Entrar</button>
-
 </div>
 
 <div class="card" id="c1">
@@ -166,17 +149,17 @@ width:200px;
 </div>
 
 <div class="card" id="c2">
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida.</p>
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida.</p>
 <button onclick="next()">Continuar</button>
 </div>
 
 <div class="card" id="c3">
-<p>Eu sou o homem mais sortudo desse mundo. É um privilégio poder dividir a vida com você.</p>
+<p>Eu sou o homem mais sortudo desse mundo.</p>
 <button onclick="next()">Continuar</button>
 </div>
 
 <div class="card" id="c4">
-<p>Você é a melhor pessoa desse mundo, a mais linda e a melhor companheira.</p>
+<p>Você é a melhor pessoa desse mundo.</p>
 <button onclick="next()">Fotos</button>
 </div>
 
@@ -191,14 +174,15 @@ width:200px;
 <div class="card story" id="c13"><img src="foto9.jpg"></div>
 
 <div class="card" id="c14">
-<h1>SUA FRASE FINAL AQUI ❤️</h1>
-<p>Depois você pode editar essa frase.</p>
+<h1>Sua frase final aqui ❤️</h1>
+<p>Depois você pode editar.</p>
 </div>
 
 <script>
 
 let atual=0
 let total=15
+let auto
 
 const bar=document.getElementById("storiesBar")
 
@@ -235,6 +219,8 @@ alert("Senha incorreta")
 
 function next(){
 
+clearTimeout(auto)
+
 document.getElementById("c"+atual)?.classList.remove("active")
 
 atual++
@@ -244,6 +230,11 @@ let prox=document.getElementById("c"+atual)
 if(prox){
 prox.classList.add("active")
 updateBar()
+
+if(atual>=5 && atual<=13){
+auto=setTimeout(next,3500)
+}
+
 }
 
 }
