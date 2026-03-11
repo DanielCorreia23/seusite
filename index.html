@@ -77,6 +77,32 @@ transform:translate(-50%,-50%) scale(1);
 pointer-events:auto;
 }
 
+.story{
+padding:0;
+overflow:hidden;
+}
+
+.story img{
+width:100%;
+height:75vh;
+object-fit:cover;
+border-radius:20px;
+}
+
+.caption{
+position:absolute;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+width:85%;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(6px);
+padding:14px 18px;
+border-radius:14px;
+font-size:20px;
+text-align:center;
+}
+
 h1{font-size:32px;}
 
 .big{
@@ -133,59 +159,46 @@ width:200px;
 </div>
 
 <div class="card" id="c1">
-
 <h1>Eu te amo, e</h1>
-
 <p>Fiz a melhor escolha da minha vida à</p>
-
 <div class="big" id="contadorCompleto"></div>
-
 <button onclick="next()">Começar</button>
-
 </div>
 
 <div class="card" id="c2">
-
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.</p>
-
-<p>Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda desse mundo como minha esposa.</p>
-
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida.</p>
 <button onclick="next()">Continuar</button>
-
 </div>
 
 <div class="card" id="c3">
-
-<p>Eu sou o homem mais sortudo desse mundo. É um privilégio poder dividir a vida com você, ouvir sua risada e ver seu sorriso todos os dias, dormir e acordar com você ao meu lado.</p>
-
-<p>Antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. E você é o meu mundo desde 2021.</p>
-
+<p>Eu sou o homem mais sortudo desse mundo. É um privilégio poder dividir a vida com você.</p>
 <button onclick="next()">Continuar</button>
-
 </div>
 
 <div class="card" id="c4">
-
-<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada e a melhor companheira.</p>
-
-<p>Eu amo ver as pessoas que nos tornamos e tudo que conquistamos juntos.</p>
-
-<button onclick="next()">Continuar</button>
-
+<p>Você é a melhor pessoa desse mundo, a mais linda e a melhor companheira.</p>
+<button onclick="next()">Fotos</button>
 </div>
 
-<div class="card" id="c5">
+<div class="card story" id="c5"><img src="foto1.jpg"></div>
+<div class="card story" id="c6"><img src="foto2.jpg"></div>
+<div class="card story" id="c7"><img src="foto3.jpg"></div>
+<div class="card story" id="c8"><img src="foto4.jpg"></div>
+<div class="card story" id="c9"><img src="foto5.jpg"></div>
+<div class="card story" id="c10"><img src="foto6.jpg"></div>
+<div class="card story" id="c11"><img src="foto7.jpg"></div>
+<div class="card story" id="c12"><img src="foto8.jpg"></div>
+<div class="card story" id="c13"><img src="foto9.jpg"></div>
 
-<h1>COLOQUE AQUI SUA FRASE FINAL ❤️</h1>
-
+<div class="card" id="c14">
+<h1>SUA FRASE FINAL AQUI ❤️</h1>
 <p>Depois você pode editar essa frase.</p>
-
 </div>
 
 <script>
 
 let atual=0
-let total=6
+let total=15
 
 const bar=document.getElementById("storiesBar")
 
