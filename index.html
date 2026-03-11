@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
@@ -36,21 +37,7 @@ pointer-events:none;
 100%{transform:translateY(-10vh) rotate(360deg)}
 }
 
-/* CHUVA FINAL */
-
-.finalSunflower{
-position:fixed;
-font-size:28px;
-animation:cair 6s linear forwards;
-pointer-events:none;
-}
-
-@keyframes cair{
-0%{transform:translateY(-10vh) rotate(0deg)}
-100%{transform:translateY(110vh) rotate(360deg)}
-}
-
-/* STORIES BAR */
+/* BARRA STORIES */
 
 #storiesBar{
 position:fixed;
@@ -63,7 +50,7 @@ z-index:999;
 }
 
 .seg{
-width:30px;
+width:28px;
 height:4px;
 background:#333;
 border-radius:2px;
@@ -102,7 +89,7 @@ text-align:center;
 box-shadow:0 10px 40px rgba(0,0,0,0.6);
 opacity:0;
 pointer-events:none;
-transition:all .6s ease;
+transition:.6s;
 }
 
 .card.active{
@@ -144,44 +131,6 @@ margin-top:10px;
 width:200px;
 }
 
-/* GIRASSOL LOGIN */
-
-.sunflowerLock{
-font-size:50px;
-margin-bottom:10px;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
-}
-
-/* PORTA */
-
-#porta{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-transform:scaleX(0);
-pointer-events:none;
-z-index:2000;
-}
-
-#porta.open{
-animation:abrirPorta 1.2s forwards;
-}
-
-@keyframes abrirPorta{
-0%{transform:scaleX(0)}
-50%{transform:scaleX(1)}
-100%{transform:scaleX(0)}
-}
-
 /* STORIES */
 
 .story{
@@ -195,9 +144,7 @@ width:100%;
 height:75vh;
 object-fit:cover;
 border-radius:20px;
-
 animation:zoom 8s ease-in-out infinite alternate;
-
 box-shadow:
 0 10px 30px rgba(0,0,0,0.8),
 0 0 25px rgba(255,255,255,0.08);
@@ -207,8 +154,6 @@ box-shadow:
 from{transform:scale(1)}
 to{transform:scale(1.08)}
 }
-
-/* GRADIENTE FOTO */
 
 .story::after{
 content:"";
@@ -220,46 +165,24 @@ height:40%;
 background:linear-gradient(transparent, rgba(0,0,0,0.8));
 }
 
-/* FRASE GLASS EFFECT */
-
 .caption{
 position:absolute;
 bottom:40px;
 left:50%;
 transform:translateX(-50%);
 width:85%;
-
 background:rgba(0,0,0,0.45);
 backdrop-filter:blur(6px);
--webkit-backdrop-filter:blur(6px);
-
 padding:14px 18px;
 border-radius:14px;
-
 font-size:20px;
 font-weight:600;
-
 text-align:center;
-color:white;
-
 box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-/* RESPONSIVO */
-
-@media(max-width:480px){
-
-.card{
-padding:30px 20px;
-}
-
-p{
-font-size:16px;
-}
-
-}
-
 </style>
+
 </head>
 
 <body>
@@ -270,16 +193,12 @@ font-size:16px;
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<div id="porta"></div>
-
 <!-- LOGIN -->
 
 <div class="card active" id="login">
 
-<div class="sunflowerLock">🌻</div>
-
 <h2>Digite a senha</h2>
-<p>(Dica: o dia mais feliz da minha vida)</p>
+<h2>Digite a senha (Dica: o dia mais feliz da minha vida)</h2>
 
 <input type="password" id="senha">
 
@@ -289,7 +208,7 @@ font-size:16px;
 
 </div>
 
-<!-- CONTADOR -->
+<!-- SLIDE 1 -->
 
 <div class="card" id="c1">
 
@@ -303,31 +222,63 @@ font-size:16px;
 
 </div>
 
-<!-- (seus slides de texto continuam exatamente iguais aqui) -->
+<!-- SLIDE 2 -->
 
-<!-- FOTOS -->
+<div class="card" id="c2">
 
-<div class="card story" id="c6"><img src="foto1.jpg"><div class="caption">Um dos primeiros momentos juntos</div></div>
-<div class="card story" id="c7"><img src="foto2.jpg"><div class="caption">Construindo nossa história</div></div>
-<div class="card story" id="c8"><img src="foto3.jpg"><div class="caption">Cada momento ao seu lado vale tudo</div></div>
-<div class="card story" id="c9"><img src="foto4.jpg"><div class="caption">Mais uma memória que eu guardo pra sempre</div></div>
-<div class="card story" id="c10"><img src="foto5.jpg"><div class="caption">Nós dois contra o mundo</div></div>
-<div class="card story" id="c11"><img src="foto6.jpg"><div class="caption">Seu sorriso sempre foi meu lugar favorito</div></div>
-<div class="card story" id="c12"><img src="foto7.jpg"><div class="caption">Mais capítulos da nossa história</div></div>
-<div class="card story" id="c13"><img src="foto8.jpg"><div class="caption">Cada ano ao seu lado vale mais que mil</div></div>
-<div class="card story" id="c14"><img src="foto9.jpg"><div class="caption">E ainda estamos só começando</div></div>
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.</p>
+
+<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.</p>
+
+<button onclick="next()">Continuar</button>
+
+</div>
+
+<!-- SLIDE 3 -->
+
+<div class="card" id="c3">
+
+<p>Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.</p>
+
+<button onclick="next()">Continuar</button>
+
+</div>
+
+<!-- SLIDE 4 -->
+
+<div class="card" id="c4">
+
+<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.</p>
+
+<p>Eu te amo muito você!</p>
+
+<button onclick="next()">Último</button>
+
+</div>
 
 <!-- FINAL -->
 
-<div class="card" id="c15">
+<div class="card" id="c5">
 
-<h1>E mesmo depois de tudo isso...</h1>
+<h1>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</h1>
 
-<p>Eu ainda escolheria você.</p>
-<p>Todas as vezes.</p>
-<p>Em qualquer vida.</p>
+<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história. Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes. Eu te amo demais, e vou te amar para todo o sempre. Feliz nosso dia 12! </p>
+
+<button onclick="next()">Fotos</button>
 
 </div>
+
+<!-- STORIES -->
+
+<div class="card story" id="c6"><img src="foto1.jpg"><div class="caption">🌻 Nosso começo</div></div>
+<div class="card story" id="c7"><img src="foto2.jpg"><div class="caption">Cada momento importa</div></div>
+<div class="card story" id="c8"><img src="foto3.jpg"><div class="caption">Memórias juntos</div></div>
+<div class="card story" id="c9"><img src="foto4.jpg"><div class="caption">Nós dois</div></div>
+<div class="card story" id="c10"><img src="foto5.jpg"><div class="caption">Sempre juntos</div></div>
+<div class="card story" id="c11"><img src="foto6.jpg"><div class="caption">Seu sorriso</div></div>
+<div class="card story" id="c12"><img src="foto7.jpg"><div class="caption">Mais capítulos</div></div>
+<div class="card story" id="c13"><img src="foto8.jpg"><div class="caption">Nossa história</div></div>
+<div class="card story" id="c14"><img src="foto9.jpg"><div class="caption">E ainda estamos só começando</div></div>
 
 <script>
 
@@ -335,35 +286,35 @@ let atual=0
 let total=15
 let auto
 
+const bar=document.getElementById("storiesBar")
+
 for(let i=0;i<total;i++){
 let seg=document.createElement("div")
 seg.className="seg"
-storiesBar.appendChild(seg)
+bar.appendChild(seg)
 }
 
-function updateProgress(){
+function updateBar(){
 document.querySelectorAll(".seg").forEach((s,i)=>{
 s.classList.toggle("active",i<atual)
 })
 }
 
-/* CHUVA FINAL */
+function entrar(){
 
-function chuvaFinal(){
+let senha=document.getElementById("senha").value
 
-for(let i=0;i<30;i++){
+if(senha==="12032021"){
 
-let s=document.createElement("div")
-s.className="finalSunflower"
-s.innerHTML="🌻"
+document.getElementById("login").classList.remove("active")
+document.getElementById("c1").classList.add("active")
 
-s.style.left=Math.random()*100+"vw"
-s.style.animationDuration=(4+Math.random()*4)+"s"
+atual=1
+updateBar()
+iniciarMusica()
 
-document.body.appendChild(s)
-
-setTimeout(()=>s.remove(),6000)
-
+}else{
+alert("Senha incorreta")
 }
 
 }
@@ -379,16 +330,11 @@ atual++
 let prox=document.getElementById("c"+atual)
 
 if(prox){
-
 prox.classList.add("active")
-updateProgress()
+updateBar()
 
 if(atual>=6 && atual<=14)
 auto=setTimeout(next,3500)
-
-if(atual==15)
-chuvaFinal()
-
 }
 
 }
@@ -398,7 +344,6 @@ const inicio=new Date("2021-03-12T00:00:00")
 setInterval(()=>{
 
 let diff=new Date()-inicio
-
 let s=Math.floor(diff/1000)
 
 let a=Math.floor(s/31536000);s-=a*31536000
@@ -406,16 +351,33 @@ let d=Math.floor(s/86400);s-=d*86400
 let h=Math.floor(s/3600);s-=h*3600
 let m=Math.floor(s/60);s-=m*60
 
-contadorCompleto.innerHTML=a+" anos<br>"+d+" dias<br>"+h+"h "+m+"m "+s+"s"
+document.getElementById("contadorCompleto").innerHTML=
+a+" anos<br>"+d+" dias<br>"+h+"h "+m+"m "+s+"s"
 
 },1000)
 
-/* GIRASSOIS FUNDO */
+function iniciarMusica(){
+
+let a=document.getElementById("musica")
+a.volume=0
+a.play()
+
+let v=0
+
+let fade=setInterval(()=>{
+if(v<1){
+v+=0.02
+a.volume=v
+}else{
+clearInterval(fade)
+}
+},200)
+
+}
 
 for(let i=0;i<25;i++){
 
 let s=document.createElement("div")
-
 s.className="sunflower"
 s.innerHTML="🌻"
 
