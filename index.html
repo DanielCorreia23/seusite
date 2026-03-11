@@ -36,17 +36,27 @@ animation:flutuar linear infinite;
 100%{transform:translateY(-10vh) rotate(360deg)}
 }
 
-/* PROGRESS BAR */
+/* STORIES BAR */
 
-#progress{
+#storiesBar{
 position:fixed;
-top:0;
-left:0;
-height:4px;
-background:white;
-width:0%;
+top:12px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:4px;
 z-index:999;
-transition:width .4s;
+}
+
+.seg{
+width:20px;
+height:4px;
+background:#333;
+border-radius:2px;
+}
+
+.seg.active{
+background:white;
 }
 
 /* CARD */
@@ -55,22 +65,26 @@ transition:width .4s;
 position:absolute;
 top:50%;
 left:50%;
-transform:translate(-50%,-50%) translateX(40px);
+transform:translate(-50%,-50%) scale(.95);
 width:420px;
 max-width:90%;
 background:#111;
 border-radius:20px;
 padding:40px;
 text-align:center;
-box-shadow:0 10px 40px rgba(0,0,0,0.6);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,0.6),
+0 0 20px rgba(255,255,255,0.05);
+
 opacity:0;
 pointer-events:none;
-transition:all .5s ease;
+transition:all .6s ease;
 }
 
 .card.active{
 opacity:1;
-transform:translate(-50%,-50%) translateX(0);
+transform:translate(-50%,-50%) scale(1);
 pointer-events:auto;
 }
 
@@ -129,13 +143,26 @@ from{transform:scale(1)}
 to{transform:scale(1.08)}
 }
 
+/* FOTO OVERLAY */
+
+.story::after{
+content:"";
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+height:40%;
+background:linear-gradient(transparent,rgba(0,0,0,.7));
+border-radius:20px;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div id="progress"></div>
+<div id="storiesBar"></div>
 
 <audio id="musica" loop preload="auto">
 <source src="musica.mp3" type="audio/mpeg">
@@ -225,11 +252,40 @@ to{transform:scale(1.08)}
 <div class="card story" id="c13"><img src="foto8.jpg"></div>
 <div class="card story" id="c14"><img src="foto9.jpg"></div>
 
+<div class="card" id="c15">
+
+<h1>E mesmo depois de tudo isso...</h1>
+
+<p>Eu ainda escolheria você.</p>
+
+<p>Todas as vezes.</p>
+
+</div>
+
 <script>
 
 let atual=1
-let total=14
+let total=15
 let auto
+
+/* CRIAR STORIES BAR */
+
+for(let i=0;i<total;i++){
+let seg=document.createElement("div")
+seg.className="seg"
+document.getElementById("storiesBar").appendChild(seg)
+}
+
+function updateProgress(){
+
+let segs=document.querySelectorAll(".seg")
+
+segs.forEach((s,i)=>{
+s.classList.remove("active")
+if(i<atual) s.classList.add("active")
+})
+
+}
 
 function entrar(){
 
@@ -266,20 +322,23 @@ if(prox){
 prox.classList.add("active")
 updateProgress()
 
-if(atual>=6){
-auto=setTimeout(next,4000)
+if(atual>=6 && atual<=14){
+auto=setTimeout(next,3500)
 }
 
 }
 
 }
 
-function updateProgress(){
+/* AVANÇAR AO CLICAR */
 
-let porcent=(atual/total)*100
-document.getElementById("progress").style.width=porcent+"%"
+document.addEventListener("click",function(e){
 
+if(atual>=1 && atual<total){
+next()
 }
+
+})
 
 /* CONTADOR */
 
