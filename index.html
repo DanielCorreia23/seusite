@@ -58,19 +58,8 @@ overflow:hidden;
 position:relative;
 }
 
-.seg::after{
-content:"";
-position:absolute;
-left:0;
-top:0;
-height:100%;
-width:0%;
+.seg.active{
 background:white;
-transition:width 3.5s linear;
-}
-
-.seg.active::after{
-width:100%;
 }
 
 /* CARD */
@@ -131,56 +120,6 @@ margin-top:10px;
 width:200px;
 }
 
-/* STORIES */
-
-.story{
-padding:0;
-overflow:hidden;
-position:relative;
-}
-
-.story img{
-width:100%;
-height:75vh;
-object-fit:cover;
-border-radius:20px;
-animation:zoom 8s ease-in-out infinite alternate;
-box-shadow:
-0 10px 30px rgba(0,0,0,0.8),
-0 0 25px rgba(255,255,255,0.08);
-}
-
-@keyframes zoom{
-from{transform:scale(1)}
-to{transform:scale(1.08)}
-}
-
-.story::after{
-content:"";
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-height:40%;
-background:linear-gradient(transparent, rgba(0,0,0,0.8));
-}
-
-.caption{
-position:absolute;
-bottom:40px;
-left:50%;
-transform:translateX(-50%);
-width:85%;
-background:rgba(0,0,0,0.45);
-backdrop-filter:blur(6px);
-padding:14px 18px;
-border-radius:14px;
-font-size:20px;
-font-weight:600;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
 </style>
 
 </head>
@@ -198,7 +137,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.6);
 <div class="card active" id="login">
 
 <h2>Digite a senha</h2>
-<h2>Digite a senha (Dica: o dia mais feliz da minha vida)</h2>
+<h2>(Dica: o dia mais feliz da minha vida)</h2>
 
 <input type="password" id="senha">
 
@@ -228,7 +167,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.6);
 
 <p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.</p>
 
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.</p>
+<p>Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda desse mundo como minha esposa.</p>
 
 <button onclick="next()">Continuar</button>
 
@@ -238,7 +177,9 @@ box-shadow:0 10px 30px rgba(0,0,0,0.6);
 
 <div class="card" id="c3">
 
-<p>Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.</p>
+<p>Eu sou o homem mais sortudo desse mundo. É um privilégio poder dividir a vida com você, ouvir sua risada e ver seu sorriso todos os dias, dormir e acordar com você ao meu lado.</p>
+
+<p>Antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. E você é o meu mundo desde 2021.</p>
 
 <button onclick="next()">Continuar</button>
 
@@ -248,43 +189,30 @@ box-shadow:0 10px 30px rgba(0,0,0,0.6);
 
 <div class="card" id="c4">
 
-<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.</p>
+<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada e a melhor companheira. Eu amo ver as pessoas que nos tornamos e tudo que conquistamos juntos.</p>
 
-<p>Eu te amo muito você!</p>
+<p>E eu sei que ainda vamos conquistar muito mais.</p>
 
-<button onclick="next()">Último</button>
+<button onclick="next()">Continuar</button>
 
 </div>
 
-<!-- FINAL -->
+<!-- SLIDE FINAL -->
 
 <div class="card" id="c5">
 
-<h1>E já que tá tocando a música, tenho que deixar claro que ela me lembra recomeço, nossa nova fase que até agora vem dando muito certo em todos os aspectos.</h1>
+<h1>Coloque aqui sua frase final ❤️</h1>
 
-<p>Mas poderia estar tocando Ordinary, Work, Essa eu fiz pro nosso amor, I wouldn't mind, Hotel Caro. Todas elas são nossas músicas, que trazem um pedaço de cada época da nossa história. Obrigado me conceder essa chance de viver uma vida com você ao meu lado. Tenho certeza que em outras vidas, eu ainda escolheria você, todas as vezes. Eu te amo demais, e vou te amar para todo o sempre. Feliz nosso dia 12! </p>
+<p>Depois você pode editar essa parte.</p>
 
-<button onclick="next()">Fotos</button>
+<button onclick="next()">Fim</button>
 
 </div>
-
-<!-- STORIES -->
-
-<div class="card story" id="c6"><img src="foto1.jpg"><div class="caption">🌻 Nosso começo</div></div>
-<div class="card story" id="c7"><img src="foto2.jpg"><div class="caption">Cada momento importa</div></div>
-<div class="card story" id="c8"><img src="foto3.jpg"><div class="caption">Memórias juntos</div></div>
-<div class="card story" id="c9"><img src="foto4.jpg"><div class="caption">Nós dois</div></div>
-<div class="card story" id="c10"><img src="foto5.jpg"><div class="caption">Sempre juntos</div></div>
-<div class="card story" id="c11"><img src="foto6.jpg"><div class="caption">Seu sorriso</div></div>
-<div class="card story" id="c12"><img src="foto7.jpg"><div class="caption">Mais capítulos</div></div>
-<div class="card story" id="c13"><img src="foto8.jpg"><div class="caption">Nossa história</div></div>
-<div class="card story" id="c14"><img src="foto9.jpg"><div class="caption">E ainda estamos só começando</div></div>
 
 <script>
 
 let atual=0
-let total=15
-let auto
+let total=6
 
 const bar=document.getElementById("storiesBar")
 
@@ -321,8 +249,6 @@ alert("Senha incorreta")
 
 function next(){
 
-clearTimeout(auto)
-
 document.getElementById("c"+atual)?.classList.remove("active")
 
 atual++
@@ -332,9 +258,6 @@ let prox=document.getElementById("c"+atual)
 if(prox){
 prox.classList.add("active")
 updateBar()
-
-if(atual>=6 && atual<=14)
-auto=setTimeout(next,3500)
 }
 
 }
