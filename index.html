@@ -2,10 +2,8 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Daniel & Stephanie</title>
 
 <style>
@@ -22,8 +20,6 @@ align-items:center;
 overflow:hidden;
 }
 
-/* GIRASSOIS */
-
 .sunflower{
 position:fixed;
 font-size:16px;
@@ -36,8 +32,6 @@ pointer-events:none;
 0%{transform:translateY(110vh) rotate(0deg)}
 100%{transform:translateY(-10vh) rotate(360deg)}
 }
-
-/* BARRA STORIES */
 
 #storiesBar{
 position:fixed;
@@ -54,15 +48,11 @@ width:28px;
 height:4px;
 background:#333;
 border-radius:2px;
-overflow:hidden;
-position:relative;
 }
 
 .seg.active{
 background:white;
 }
-
-/* CARD */
 
 .card{
 position:absolute;
@@ -121,33 +111,26 @@ width:200px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div id="storiesBar"></div>
 
-<audio id="musica" loop preload="auto">
+<audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
-
-<!-- LOGIN -->
 
 <div class="card active" id="login">
 
 <h2>Digite a senha</h2>
-<h2>(Dica: o dia mais feliz da minha vida)</h2>
+<h3>(Dica: o dia mais feliz da minha vida)</h3>
 
 <input type="password" id="senha">
-
 <br>
-
 <button onclick="entrar()">Entrar</button>
 
 </div>
-
-<!-- SLIDE 1 -->
 
 <div class="card" id="c1">
 
@@ -161,8 +144,6 @@ width:200px;
 
 </div>
 
-<!-- SLIDE 2 -->
-
 <div class="card" id="c2">
 
 <p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.</p>
@@ -172,8 +153,6 @@ width:200px;
 <button onclick="next()">Continuar</button>
 
 </div>
-
-<!-- SLIDE 3 -->
 
 <div class="card" id="c3">
 
@@ -185,27 +164,21 @@ width:200px;
 
 </div>
 
-<!-- SLIDE 4 -->
-
 <div class="card" id="c4">
 
-<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada e a melhor companheira. Eu amo ver as pessoas que nos tornamos e tudo que conquistamos juntos.</p>
+<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada e a melhor companheira.</p>
 
-<p>E eu sei que ainda vamos conquistar muito mais.</p>
+<p>Eu amo ver as pessoas que nos tornamos e tudo que conquistamos juntos.</p>
 
 <button onclick="next()">Continuar</button>
 
 </div>
 
-<!-- SLIDE FINAL -->
-
 <div class="card" id="c5">
 
-<h1>Coloque aqui sua frase final ❤️</h1>
+<h1>COLOQUE AQUI SUA FRASE FINAL ❤️</h1>
 
-<p>Depois você pode editar essa parte.</p>
-
-<button onclick="next()">Fim</button>
+<p>Depois você pode editar essa parte com algo especial.</p>
 
 </div>
 
