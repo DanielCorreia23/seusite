@@ -96,10 +96,12 @@ object-fit:cover;
 border-radius:20px;
 }
 
+/* TEXTO DAS FOTOS (CORRIGIDO PARA MOBILE) */
+
 .storyText{
 
 position:absolute;
-bottom:40px;
+bottom:30px;
 left:50%;
 transform:translateX(-50%);
 
@@ -110,7 +112,15 @@ padding:16px 20px;
 border-radius:16px;
 
 font-size:18px;
-max-width:85%;
+
+width:85%;
+max-width:500px;
+
+box-sizing:border-box;
+word-wrap:break-word;
+overflow-wrap:break-word;
+
+text-align:center;
 
 opacity:0;
 transition:opacity 1s;
@@ -119,6 +129,18 @@ transition:opacity 1s;
 
 .storyText.show{
 opacity:1;
+}
+
+/* ajuste celular */
+
+@media (max-width:600px){
+
+.storyText{
+font-size:16px;
+width:90%;
+bottom:20px;
+}
+
 }
 
 h1{
@@ -168,8 +190,6 @@ width:200px;
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<!-- LOGIN -->
-
 <div class="card active" id="login">
 
 <h2>Digite a senha</h2>
@@ -183,8 +203,6 @@ width:200px;
 
 </div>
 
-<!-- SLIDE 1 -->
-
 <div class="card" id="c1">
 
 <h1>Eu te amo, e</h1>
@@ -196,8 +214,6 @@ width:200px;
 <button onclick="next()">Começar</button>
 
 </div>
-
-<!-- FOTOS -->
 
 <div class="card story" id="c2" onclick="next()">
 <img src="foto1.jpg">
@@ -244,7 +260,7 @@ Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor co
 <div class="card story" id="c8" onclick="next()">
 <img src="foto7.jpg">
 <div class="storyText">
-Eu coloquei essa música tocando porque ela me lembra nosso recomeço, o momento que decidimos fazer isso dar certo, e estamos conseguindo isso muito bem. Mas aqui poderia estar tocando Work, I Wouldn't Mind, Hotel Caro, Essa Eu Fiz Pro Nosso Amor, cada música que lembra uma época diferente no nosso relacionamento, que carrega um pedaço da nossa história. 
+Eu coloquei essa música tocando porque ela me lembra nosso recomeço, o momento que decidimos fazer isso dar certo, e estamos conseguindo isso muito bem. Mas aqui poderia estar tocando Work, I Wouldn't Mind, Hotel Caro, Essa Eu Fiz Pro Nosso Amor, cada música que lembra uma época diferente no nosso relacionamento, que carrega um pedaço da nossa história.
 </div>
 </div>
 
@@ -261,8 +277,6 @@ E finalmente tenho tranquilidade em ver nosso futuro se desenhando, mesmo após 
 Eu tenho a certeza que ainda vamos conquistar o mundo juntos, feliz nosso dia 12 meu bem. Eu te amo muito!
 </div>
 </div>
-
-<!-- FINAL -->
 
 <div class="card" id="c11">
 
