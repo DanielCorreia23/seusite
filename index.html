@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Daniel & Stephanie</title>
 
 <style>
@@ -87,6 +86,7 @@ pointer-events:auto;
 .story{
 background:none;
 padding:0;
+cursor:pointer;
 }
 
 .story img{
@@ -197,112 +197,69 @@ width:200px;
 
 </div>
 
-<!-- FOTO 1 -->
+<!-- FOTOS -->
 
-<div class="card story" id="c2">
-
+<div class="card story" id="c2" onclick="next()">
 <img src="foto1.jpg">
-
 <div class="storyText">
 Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.
 </div>
-
 </div>
 
-<!-- FOTO 2 -->
-
-<div class="card story" id="c3">
-
+<div class="card story" id="c3" onclick="next()">
 <img src="foto2.jpg">
-
 <div class="storyText">
 Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.
 </div>
-
 </div>
 
-<!-- FOTO 3 -->
-
-<div class="card story" id="c4">
-
+<div class="card story" id="c4" onclick="next()">
 <img src="foto3.jpg">
-
 <div class="storyText">
 Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado.
 </div>
-
 </div>
 
-<!-- FOTO 4 -->
-
-<div class="card story" id="c5">
-
+<div class="card story" id="c5" onclick="next()">
 <img src="foto4.jpg">
-
 <div class="storyText">
 Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você.
 </div>
-
 </div>
 
-<!-- FOTO 5 -->
-
-<div class="card story" id="c6">
-
+<div class="card story" id="c6" onclick="next()">
 <img src="foto5.jpg">
-
 <div class="storyText">
 Você é o meu mundo que eu conquistei lá em 2021.
 </div>
-
 </div>
 
-<!-- FOTO 6 -->
-
-<div class="card story" id="c7">
-
+<div class="card story" id="c7" onclick="next()">
 <img src="foto6.jpg">
-
 <div class="storyText">
 Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor companheira.
 </div>
-
 </div>
 
-<!-- FOTO 7 -->
-
-<div class="card story" id="c8">
-
+<div class="card story" id="c8" onclick="next()">
 <img src="foto7.jpg">
-
 <div class="storyText">
 Eu amo ver as pessoas que nos tornamos hoje e tudo que conquistamos até agora.
 </div>
-
 </div>
 
-<!-- FOTO 8 -->
-
-<div class="card story" id="c9">
-
+<div class="card story" id="c9" onclick="next()">
 <img src="foto8.jpg">
-
 <div class="storyText">
 E finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos.
 </div>
-
 </div>
 
-<!-- FOTO 9 -->
-
-<div class="card story" id="c10">
-
+<div class="card story" id="c10" onclick="next()">
 <img src="foto9.jpg">
-
 <div class="storyText">
 Eu te amo muito você!
 </div>
-
 </div>
 
 <!-- FINAL -->
@@ -332,7 +289,6 @@ Eu te amo muito você!
 <script>
 
 let atual = 1
-let auto
 
 /* barra */
 
@@ -378,8 +334,6 @@ alert("Senha incorreta")
 
 function next(){
 
-clearTimeout(auto)
-
 document.getElementById("c"+atual)?.classList.remove("active")
 
 atual++
@@ -395,14 +349,10 @@ let texto = prox.querySelector(".storyText")
 if(texto){
 setTimeout(()=>{
 texto.classList.add("show")
-},1500)
+},800)
 }
 
 atualizarBar()
-
-if(atual >= 2 && atual <= 10){
-auto=setTimeout(next,4000)
-}
 
 }
 
@@ -474,9 +424,7 @@ clearInterval(fade)
 /* final */
 
 function mostrarPergunta(){
-
 document.getElementById("pergunta").style.display="block"
-
 }
 
 function mostrarResposta(){
