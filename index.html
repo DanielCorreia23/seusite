@@ -27,28 +27,18 @@ overflow:hidden;
 .card{
 
 position:absolute;
-
 top:50%;
 left:50%;
-
 transform:translate(-50%,-50%) translateX(40px);
-
 width:420px;
 max-width:90%;
-
 background:#111;
-
 border-radius:20px;
-
 padding:40px;
-
 text-align:center;
-
 box-shadow:0 10px 40px rgba(0,0,0,0.6);
-
 opacity:0;
 pointer-events:none;
-
 transition:all .5s ease;
 
 }
@@ -56,10 +46,24 @@ transition:all .5s ease;
 .card.active{
 
 opacity:1;
-
 transform:translate(-50%,-50%) translateX(0);
-
 pointer-events:auto;
+
+}
+
+.story{
+
+background:none;
+padding:0;
+
+}
+
+.story img{
+
+width:100%;
+height:70vh;
+object-fit:cover;
+border-radius:20px;
 
 }
 
@@ -81,19 +85,12 @@ font-size:18px;
 button{
 
 margin-top:20px;
-
 padding:12px 25px;
-
 border:none;
-
 border-radius:30px;
-
 background:white;
-
 color:black;
-
 font-weight:bold;
-
 cursor:pointer;
 
 }
@@ -101,28 +98,11 @@ cursor:pointer;
 input{
 
 padding:10px;
-
 border-radius:8px;
-
 border:none;
-
 text-align:center;
-
 margin-top:10px;
-
 width:200px;
-
-}
-
-/* efeito glass da resposta final */
-
-#respostaFinal{
-
-background:rgba(255,255,255,0.08);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-margin-top:20px;
 
 }
 
@@ -131,8 +111,6 @@ margin-top:20px;
 </head>
 
 <body>
-
-<!-- MUSICA -->
 
 <audio id="musica" loop preload="auto">
 <source src="musica.mp3" type="audio/mpeg">
@@ -153,7 +131,6 @@ margin-top:20px;
 
 </div>
 
-
 <!-- SLIDE 1 -->
 
 <div class="card" id="c1">
@@ -168,7 +145,6 @@ margin-top:20px;
 
 </div>
 
-
 <!-- SLIDE 2 -->
 
 <div class="card" id="c2">
@@ -181,7 +157,6 @@ margin-top:20px;
 
 </div>
 
-
 <!-- SLIDE 3 -->
 
 <div class="card" id="c3">
@@ -192,7 +167,6 @@ margin-top:20px;
 
 </div>
 
-
 <!-- SLIDE 4 -->
 
 <div class="card" id="c4">
@@ -201,14 +175,25 @@ margin-top:20px;
 
 <p>Eu te amo muito você!</p>
 
-<button onclick="next()">Último</button>
+<button onclick="next()">Fotos</button>
 
 </div>
 
+<!-- FOTOS -->
 
-<!-- SLIDE FINAL INTERATIVO -->
+<div class="card story" id="c5"><img src="foto1.jpg"></div>
+<div class="card story" id="c6"><img src="foto2.jpg"></div>
+<div class="card story" id="c7"><img src="foto3.jpg"></div>
+<div class="card story" id="c8"><img src="foto4.jpg"></div>
+<div class="card story" id="c9"><img src="foto5.jpg"></div>
+<div class="card story" id="c10"><img src="foto6.jpg"></div>
+<div class="card story" id="c11"><img src="foto7.jpg"></div>
+<div class="card story" id="c12"><img src="foto8.jpg"></div>
+<div class="card story" id="c13"><img src="foto9.jpg"></div>
 
-<div class="card" id="c5">
+<!-- SLIDE FINAL -->
+
+<div class="card" id="c14">
 
 <h1>Antes de terminar...</h1>
 
@@ -218,7 +203,7 @@ margin-top:20px;
 
 <p>Quer viver mais quantos anos comigo?</p>
 
-<input type="number" id="anosDesejados" placeholder="Digite um número">
+<input type="number" id="anosDesejados">
 
 <br>
 
@@ -226,14 +211,14 @@ margin-top:20px;
 
 </div>
 
-<div id="respostaFinal" style="display:none;"></div>
+<div id="respostaFinal" style="display:none; margin-top:20px;"></div>
 
 </div>
-
 
 <script>
 
 let atual = 1
+let auto
 
 function entrar(){
 
@@ -256,6 +241,8 @@ alert("Senha incorreta")
 
 function next(){
 
+clearTimeout(auto)
+
 document.getElementById("c"+atual).classList.remove("active")
 
 atual++
@@ -263,7 +250,15 @@ atual++
 let prox = document.getElementById("c"+atual)
 
 if(prox){
+
 prox.classList.add("active")
+
+if(atual >= 5 && atual <= 13){
+
+auto = setTimeout(next,3500)
+
+}
+
 }
 
 }
@@ -335,11 +330,11 @@ clearInterval(fade)
 
 }
 
-/* FINAL INTERATIVO */
+/* FINAL */
 
 function mostrarPergunta(){
 
-document.getElementById("pergunta").style.display = "block"
+document.getElementById("pergunta").style.display="block"
 
 }
 
@@ -354,11 +349,10 @@ alert("Digite um número 😅")
 return
 }
 
-resposta.style.display = "block"
+resposta.style.display="block"
 
 resposta.innerHTML =
-"Então temos pelo menos <b>" + anos + " anos</b> incríveis pela frente.<br><br>" +
-"E mesmo depois disso, eu escolheria você de novo. ❤️"
+"Então temos pelo menos <b>"+anos+" anos</b> incríveis pela frente.<br><br>E mesmo depois disso, eu escolheria você de novo. ❤️"
 
 }
 
