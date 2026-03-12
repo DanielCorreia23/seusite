@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Daniel & Stephanie</title>
 
 <style>
@@ -20,7 +21,7 @@ align-items:center;
 overflow:hidden;
 }
 
-/* BARRA STORIES */
+/* barra stories */
 
 #storiesBar{
 position:fixed;
@@ -43,7 +44,7 @@ border-radius:2px;
 background:white;
 }
 
-/* GIRASSOIS */
+/* girassois */
 
 .sunflower{
 position:fixed;
@@ -54,18 +55,11 @@ pointer-events:none;
 }
 
 @keyframes flutuar{
-
-0%{
-transform:translateY(110vh) rotate(0deg);
+0%{transform:translateY(110vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
 }
 
-100%{
-transform:translateY(-10vh) rotate(360deg);
-}
-
-}
-
-/* CARD */
+/* card */
 
 .card{
 position:absolute;
@@ -100,6 +94,31 @@ width:100%;
 height:70vh;
 object-fit:cover;
 border-radius:20px;
+}
+
+.storyText{
+
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(6px);
+
+padding:16px 20px;
+border-radius:16px;
+
+font-size:18px;
+max-width:85%;
+
+opacity:0;
+transition:opacity 1s;
+
+}
+
+.storyText.show{
+opacity:1;
 }
 
 h1{
@@ -164,7 +183,6 @@ width:200px;
 
 </div>
 
-
 <!-- SLIDE 1 -->
 
 <div class="card" id="c1">
@@ -179,60 +197,117 @@ width:200px;
 
 </div>
 
+<!-- FOTO 1 -->
 
-<!-- SLIDE 2 -->
+<div class="card story" id="c2">
 
-<div class="card" id="c2">
+<img src="foto1.jpg">
 
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.</p>
-
-<p>Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.</p>
-
-<button onclick="next()">Continuar</button>
+<div class="storyText">
+Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Por você eu mato e morro.
+</div>
 
 </div>
 
+<!-- FOTO 2 -->
 
-<!-- SLIDE 3 -->
+<div class="card story" id="c3">
 
-<div class="card" id="c3">
+<img src="foto2.jpg">
 
-<p>Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado. Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você. Você é o meu mundo que eu conquistei lá em 2021. E desde então, todo dia 12 serve para comemorar o fato de eu ter uma mulher tão maravilhosa e perfeito ao meu lado.</p>
-
-<button onclick="next()">Continuar</button>
+<div class="storyText">
+Dia 12 de março de 2021 foi o melhor dia da minha vida. O dia que oficializei você como a mulher da minha vida, o dia conquistei meu bem mais precioso. Você significa tudo pra mim. É minha vida, minha família. Eu amo cada detalhe seu. Seu olhar, seu corpo, seu sorriso. Eu simplesmente tive a sorte de ter a mulher mais linda dessa mundo como minha esposa.
+</div>
 
 </div>
 
+<!-- FOTO 3 -->
 
-<!-- SLIDE 4 -->
+<div class="card story" id="c4">
 
-<div class="card" id="c4">
+<img src="foto3.jpg">
 
-<p>Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor compnheira. Simplesmente a melhor em tudo. Eu amo ver as pessoas que nos tornamos hoje, o que consquistamos até agora e finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos, como nosso carro, nossas viagens (pra Disney também) e tudo mais.</p>
-
-<p>Eu te amo muito você!</p>
-
-<button onclick="next()">Fotos</button>
+<div class="storyText">
+Eu sou o homem mais sortudo desse mundo, é um privilégio poder dividir a vida com você, poder ouvir sua risada e ver seu sorriso todo dia, dormir e acordar com você ao meu lado.
+</div>
 
 </div>
 
+<!-- FOTO 4 -->
 
-<!-- FOTOS -->
+<div class="card story" id="c5">
 
-<div class="card story" id="c5"><img src="foto1.jpg"></div>
-<div class="card story" id="c6"><img src="foto2.jpg"></div>
-<div class="card story" id="c7"><img src="foto3.jpg"></div>
-<div class="card story" id="c8"><img src="foto4.jpg"></div>
-<div class="card story" id="c9"><img src="foto5.jpg"></div>
-<div class="card story" id="c10"><img src="foto6.jpg"></div>
-<div class="card story" id="c11"><img src="foto7.jpg"></div>
-<div class="card story" id="c12"><img src="foto8.jpg"></div>
-<div class="card story" id="c13"><img src="foto9.jpg"></div>
+<img src="foto4.jpg">
 
+<div class="storyText">
+Você sabe mais do que ninguém que antes de sonhar em conquistar o mundo ao seu lado, eu já sonhava em conquistar você.
+</div>
+
+</div>
+
+<!-- FOTO 5 -->
+
+<div class="card story" id="c6">
+
+<img src="foto5.jpg">
+
+<div class="storyText">
+Você é o meu mundo que eu conquistei lá em 2021.
+</div>
+
+</div>
+
+<!-- FOTO 6 -->
+
+<div class="card story" id="c7">
+
+<img src="foto6.jpg">
+
+<div class="storyText">
+Você é a melhor pessoa desse mundo, a mais linda, a mais dedicada, a melhor companheira.
+</div>
+
+</div>
+
+<!-- FOTO 7 -->
+
+<div class="card story" id="c8">
+
+<img src="foto7.jpg">
+
+<div class="storyText">
+Eu amo ver as pessoas que nos tornamos hoje e tudo que conquistamos até agora.
+</div>
+
+</div>
+
+<!-- FOTO 8 -->
+
+<div class="card story" id="c9">
+
+<img src="foto8.jpg">
+
+<div class="storyText">
+E finalmente ter a tranquilidade de saber que podemos sonhar e vamos sim conquistar tudo que sonhamos.
+</div>
+
+</div>
+
+<!-- FOTO 9 -->
+
+<div class="card story" id="c10">
+
+<img src="foto9.jpg">
+
+<div class="storyText">
+Eu te amo muito você!
+</div>
+
+</div>
 
 <!-- FINAL -->
 
-<div class="card" id="c14">
+<div class="card" id="c11">
 
 <h1>Antes de terminar...</h1>
 
@@ -254,34 +329,29 @@ width:200px;
 
 </div>
 
-
 <script>
 
 let atual = 1
 let auto
 
-/* BARRA STORIES */
+/* barra */
 
-const totalSlides = 14
+const totalSlides = 11
 const bar = document.getElementById("storiesBar")
 
 for(let i=0;i<totalSlides;i++){
-
 let seg=document.createElement("div")
 seg.className="seg"
 bar.appendChild(seg)
-
 }
 
 function atualizarBar(){
-
 document.querySelectorAll(".seg").forEach((s,i)=>{
 s.classList.toggle("active",i<atual)
 })
-
 }
 
-/* LOGIN */
+/* login */
 
 function entrar(){
 
@@ -304,7 +374,7 @@ alert("Senha incorreta")
 
 }
 
-/* SLIDES */
+/* slides */
 
 function next(){
 
@@ -320,19 +390,25 @@ if(prox){
 
 prox.classList.add("active")
 
+let texto = prox.querySelector(".storyText")
+
+if(texto){
+setTimeout(()=>{
+texto.classList.add("show")
+},1500)
+}
+
 atualizarBar()
 
-if(atual >= 5 && atual <= 13){
-
-auto=setTimeout(next,3500)
-
+if(atual >= 2 && atual <= 10){
+auto=setTimeout(next,4000)
 }
 
 }
 
 }
 
-/* CONTADOR */
+/* contador */
 
 const inicio = new Date("2021-03-12T00:00:00")
 
@@ -368,7 +444,7 @@ segundos + "s"
 setInterval(atualizarContador,1000)
 atualizarContador()
 
-/* MUSICA */
+/* música */
 
 function iniciarMusica(){
 
@@ -383,14 +459,10 @@ let volume = 0
 let fade = setInterval(function(){
 
 if(volume < 1){
-
 volume += 0.02
 audio.volume = volume
-
 }else{
-
 clearInterval(fade)
-
 }
 
 },200)
@@ -399,7 +471,7 @@ clearInterval(fade)
 
 }
 
-/* FINAL */
+/* final */
 
 function mostrarPergunta(){
 
@@ -425,7 +497,7 @@ resposta.innerHTML =
 
 }
 
-/* GIRASSOIS */
+/* girassóis */
 
 for(let i=0;i<25;i++){
 
