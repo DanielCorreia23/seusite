@@ -2,10 +2,8 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Daniel & Stephanie</title>
 
 <style>
@@ -22,10 +20,54 @@ align-items:center;
 overflow:hidden;
 }
 
+/* BARRA STORIES */
+
+#storiesBar{
+position:fixed;
+top:12px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:4px;
+z-index:999;
+}
+
+.seg{
+width:28px;
+height:4px;
+background:#333;
+border-radius:2px;
+}
+
+.seg.active{
+background:white;
+}
+
+/* GIRASSOIS */
+
+.sunflower{
+position:fixed;
+font-size:16px;
+opacity:0.25;
+animation:flutuar linear infinite;
+pointer-events:none;
+}
+
+@keyframes flutuar{
+
+0%{
+transform:translateY(110vh) rotate(0deg);
+}
+
+100%{
+transform:translateY(-10vh) rotate(360deg);
+}
+
+}
+
 /* CARD */
 
 .card{
-
 position:absolute;
 top:50%;
 left:50%;
@@ -40,31 +82,24 @@ box-shadow:0 10px 40px rgba(0,0,0,0.6);
 opacity:0;
 pointer-events:none;
 transition:all .5s ease;
-
 }
 
 .card.active{
-
 opacity:1;
 transform:translate(-50%,-50%) translateX(0);
 pointer-events:auto;
-
 }
 
 .story{
-
 background:none;
 padding:0;
-
 }
 
 .story img{
-
 width:100%;
 height:70vh;
 object-fit:cover;
 border-radius:20px;
-
 }
 
 h1{
@@ -83,7 +118,6 @@ font-size:18px;
 }
 
 button{
-
 margin-top:20px;
 padding:12px 25px;
 border:none;
@@ -92,18 +126,15 @@ background:white;
 color:black;
 font-weight:bold;
 cursor:pointer;
-
 }
 
 input{
-
 padding:10px;
 border-radius:8px;
 border:none;
 text-align:center;
 margin-top:10px;
 width:200px;
-
 }
 
 </style>
@@ -111,6 +142,8 @@ width:200px;
 </head>
 
 <body>
+
+<div id="storiesBar"></div>
 
 <audio id="musica" loop preload="auto">
 <source src="musica.mp3" type="audio/mpeg">
@@ -131,6 +164,7 @@ width:200px;
 
 </div>
 
+
 <!-- SLIDE 1 -->
 
 <div class="card" id="c1">
@@ -145,6 +179,7 @@ width:200px;
 
 </div>
 
+
 <!-- SLIDE 2 -->
 
 <div class="card" id="c2">
@@ -157,6 +192,7 @@ width:200px;
 
 </div>
 
+
 <!-- SLIDE 3 -->
 
 <div class="card" id="c3">
@@ -166,6 +202,7 @@ width:200px;
 <button onclick="next()">Continuar</button>
 
 </div>
+
 
 <!-- SLIDE 4 -->
 
@@ -179,6 +216,7 @@ width:200px;
 
 </div>
 
+
 <!-- FOTOS -->
 
 <div class="card story" id="c5"><img src="foto1.jpg"></div>
@@ -191,7 +229,8 @@ width:200px;
 <div class="card story" id="c12"><img src="foto8.jpg"></div>
 <div class="card story" id="c13"><img src="foto9.jpg"></div>
 
-<!-- SLIDE FINAL -->
+
+<!-- FINAL -->
 
 <div class="card" id="c14">
 
@@ -215,10 +254,34 @@ width:200px;
 
 </div>
 
+
 <script>
 
 let atual = 1
 let auto
+
+/* BARRA STORIES */
+
+const totalSlides = 14
+const bar = document.getElementById("storiesBar")
+
+for(let i=0;i<totalSlides;i++){
+
+let seg=document.createElement("div")
+seg.className="seg"
+bar.appendChild(seg)
+
+}
+
+function atualizarBar(){
+
+document.querySelectorAll(".seg").forEach((s,i)=>{
+s.classList.toggle("active",i<atual)
+})
+
+}
+
+/* LOGIN */
 
 function entrar(){
 
@@ -228,6 +291,8 @@ if(senha === "12032021"){
 
 document.getElementById("login").classList.remove("active")
 document.getElementById("c1").classList.add("active")
+
+atualizarBar()
 
 iniciarMusica()
 
@@ -239,23 +304,27 @@ alert("Senha incorreta")
 
 }
 
+/* SLIDES */
+
 function next(){
 
 clearTimeout(auto)
 
-document.getElementById("c"+atual).classList.remove("active")
+document.getElementById("c"+atual)?.classList.remove("active")
 
 atual++
 
-let prox = document.getElementById("c"+atual)
+let prox=document.getElementById("c"+atual)
 
 if(prox){
 
 prox.classList.add("active")
 
+atualizarBar()
+
 if(atual >= 5 && atual <= 13){
 
-auto = setTimeout(next,3500)
+auto=setTimeout(next,3500)
 
 }
 
@@ -353,6 +422,26 @@ resposta.style.display="block"
 
 resposta.innerHTML =
 "Então temos pelo menos <b>"+anos+" anos</b> incríveis pela frente.<br><br>E mesmo depois disso, eu escolheria você de novo. ❤️"
+
+}
+
+/* GIRASSOIS */
+
+for(let i=0;i<25;i++){
+
+let s=document.createElement("div")
+
+s.className="sunflower"
+
+s.innerHTML="🌻"
+
+s.style.left=Math.random()*100+"vw"
+
+s.style.animationDuration=(10+Math.random()*15)+"s"
+
+s.style.fontSize=(10+Math.random()*14)+"px"
+
+document.body.appendChild(s)
 
 }
 
