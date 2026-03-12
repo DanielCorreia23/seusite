@@ -96,8 +96,6 @@ object-fit:cover;
 border-radius:20px;
 }
 
-/* TEXTO NAS FOTOS */
-
 .storyText{
 
 position:absolute;
@@ -106,14 +104,12 @@ left:50%;
 transform:translateX(-50%);
 
 background:rgba(0,0,0,0.45);
-backdrop-filter:blur(8px);
+backdrop-filter:blur(6px);
 
 padding:16px 20px;
 border-radius:16px;
 
-font-size:clamp(15px,2.4vw,18px);
-line-height:1.6;
-
+font-size:18px;
 max-width:85%;
 
 opacity:0;
@@ -158,31 +154,6 @@ border:none;
 text-align:center;
 margin-top:10px;
 width:200px;
-}
-
-/* RESPONSIVO CELULAR */
-
-@media (max-width:600px){
-
-.story img{
-height:75vh;
-}
-
-.storyText{
-
-font-size:16px;
-
-max-width:90%;
-
-padding:14px 16px;
-
-bottom:20px;
-
-max-height:55vh;
-overflow-y:auto;
-
-}
-
 }
 
 </style>
@@ -314,3 +285,173 @@ Eu tenho a certeza que ainda vamos conquistar o mundo juntos, feliz nosso dia 12
 <div id="respostaFinal" style="display:none; margin-top:20px;"></div>
 
 </div>
+
+<script>
+
+let atual = 1
+
+const totalSlides = 11
+const bar = document.getElementById("storiesBar")
+
+for(let i=0;i<totalSlides;i++){
+let seg=document.createElement("div")
+seg.className="seg"
+bar.appendChild(seg)
+}
+
+function atualizarBar(){
+document.querySelectorAll(".seg").forEach((s,i)=>{
+s.classList.toggle("active",i<atual)
+})
+}
+
+function entrar(){
+
+let senha = document.getElementById("senha").value
+
+if(senha === "12032021"){
+
+document.getElementById("login").classList.remove("active")
+document.getElementById("c1").classList.add("active")
+
+atualizarBar()
+
+iniciarMusica()
+
+}else{
+
+alert("Senha incorreta")
+
+}
+
+}
+
+function next(){
+
+document.getElementById("c"+atual)?.classList.remove("active")
+
+atual++
+
+let prox=document.getElementById("c"+atual)
+
+if(prox){
+
+prox.classList.add("active")
+
+let texto = prox.querySelector(".storyText")
+
+if(texto){
+setTimeout(()=>{
+texto.classList.add("show")
+},800)
+}
+
+atualizarBar()
+
+}
+
+}
+
+const inicio = new Date("2021-03-12T00:00:00")
+
+function atualizarContador(){
+
+const agora = new Date()
+
+let diff = agora - inicio
+
+let segundos = Math.floor(diff / 1000)
+
+let anos = Math.floor(segundos / 31536000)
+segundos -= anos * 31536000
+
+let dias = Math.floor(segundos / 86400)
+segundos -= dias * 86400
+
+let horas = Math.floor(segundos / 3600)
+segundos -= horas * 3600
+
+let minutos = Math.floor(segundos / 60)
+segundos -= minutos * 60
+
+document.getElementById("contadorCompleto").innerHTML =
+anos + " anos<br>" +
+dias + " dias<br>" +
+horas + "h " +
+minutos + "m " +
+segundos + "s"
+
+}
+
+setInterval(atualizarContador,1000)
+atualizarContador()
+
+function iniciarMusica(){
+
+let audio = document.getElementById("musica")
+
+audio.volume = 0
+
+audio.play().then(()=>{
+
+let volume = 0
+
+let fade = setInterval(function(){
+
+if(volume < 1){
+volume += 0.02
+audio.volume = volume
+}else{
+clearInterval(fade)
+}
+
+},200)
+
+})
+
+}
+
+function mostrarPergunta(){
+document.getElementById("pergunta").style.display="block"
+}
+
+function mostrarResposta(){
+
+let anos = document.getElementById("anosDesejados").value
+
+let resposta = document.getElementById("respostaFinal")
+
+if(anos === ""){
+alert("Digite um número 😅")
+return
+}
+
+resposta.style.display="block"
+
+resposta.innerHTML =
+"Então temos pelo menos <b>"+anos+" anos</b> incríveis pela frente.<br><br>E mesmo depois disso, eu escolheria você de novo. ❤️"
+
+}
+
+for(let i=0;i<25;i++){
+
+let s=document.createElement("div")
+
+s.className="sunflower"
+
+s.innerHTML="🌻"
+
+s.style.left=Math.random()*100+"vw"
+
+s.style.animationDuration=(10+Math.random()*15)+"s"
+
+s.style.fontSize=(10+Math.random()*14)+"px"
+
+document.body.appendChild(s)
+
+}
+
+</script>
+
+</body>
+</html>
